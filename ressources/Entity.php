@@ -4,6 +4,7 @@ require('DBTable.php');
 
 abstract class Entity implements DBTable {
 
+    private $id;
     private $civilite;
     private $nom;
     private $prenom;
@@ -14,14 +15,24 @@ abstract class Entity implements DBTable {
      * @param $nom
      * @param $prenom
      */
-    public function __construct($civilite, $nom, $prenom) {
+    public function __construct($id, $civilite, $nom, $prenom) {
+        if(is_null($id)) {
+            $this->id = $id;
+        }
         $this->civilite = $civilite;
         $this->nom = $nom;
         $this->prenom = $prenom;
     }
 
     /**
-     * @return la civilite de l'usager
+     * @return l'id de l'entitee
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * @return la civilite de l'entitee
      */
     public function getCivilite()
     {
@@ -29,7 +40,7 @@ abstract class Entity implements DBTable {
     }
 
     /**
-     * @return le nom de l'usager
+     * @return le nom de l'entitee
      */
     public function getNom()
     {
@@ -37,7 +48,7 @@ abstract class Entity implements DBTable {
     }
 
     /**
-     * @return le prenom de l'usager
+     * @return le prenom de l'entitee
      */
     public function getPrenom()
     {

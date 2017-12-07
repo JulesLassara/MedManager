@@ -1,23 +1,11 @@
 <?php
 
-require('GlobalDAO.php');
+require('GenericDAO.php');
 
-class MedecinDAO extends GlobalDAO {
-
-    private $tableName = "medecin";
-    private $columns = array('civilite', 'nom', 'prenom');
+class MedecinDAO extends GenericDAO {
 
     public function __construct(Medecin $element) {
-        parent::__construct($element);
+        parent::__construct($element, "medecin", array('civilite', 'nom', 'prenom'));
     }
-
-    public function getColumns() {
-        return $this->columns;
-    }
-
-    public function getTableName() {
-        return $this->tableName;
-    }
-
 
 }

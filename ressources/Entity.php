@@ -24,6 +24,7 @@ abstract class Entity implements DBTable {
         $this->prenom = $prenom;
     }
 
+
     /**
      * @return l'id de l'entitee
      */

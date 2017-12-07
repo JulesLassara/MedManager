@@ -9,7 +9,8 @@ class Usager extends Entity {
     private $medecinref;
 
     /**
-     * Usager constructor.
+     * Usager constructor with a nullable id.
+     * @param $id
      * @param $civilite
      * @param $nom
      * @param $prenom
@@ -19,8 +20,8 @@ class Usager extends Entity {
      * @param $numsecu
      * @param $medecinref
      */
-    public function __construct($civilite, $nom, $prenom, $adresse, $datenaissance, $lieunaissance, $numsecu, $medecinref) {
-        parent::__construct($civilite, $nom, $prenom);
+    public function __construct($id, $civilite, $nom, $prenom, $adresse, $datenaissance, $lieunaissance, $numsecu, $medecinref) {
+        parent::__construct($id, $civilite, $nom, $prenom);
         $this->adresse = $adresse;
         $this->datenaissance = $datenaissance;
         $this->lieunaissance = $lieunaissance;

@@ -4,7 +4,7 @@ require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');
 
 session_start();
-if(isset($_POST['addDoc']) && !isset($_SESSION['done'])) {
+if(isset($_POST['addDoc'])) {
     if(!empty($_POST['civilite'])
     && !empty($_POST['name'])
     && !empty($_POST['surname'])) {
@@ -15,7 +15,6 @@ if(isset($_POST['addDoc']) && !isset($_SESSION['done'])) {
         } else {
             $_SESSION['info'] = $rmed->insert();
         }
-        $_SESSION['done'] = 1;
         unset($_POST);
     } else {
         $_SESSION['info'] = 2;

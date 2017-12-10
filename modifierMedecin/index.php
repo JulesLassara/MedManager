@@ -3,10 +3,12 @@
 require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');
 
+$med = new MedecinDAO(new Medecin(null, null, null, null));
+
 if(isset($_POST['search'])) {
-    $med = new MedecinDAO(new Medecin(null, null, null, null));
     $res = $med->getElementsByKeyword($_POST['keyword']);
-    echo var_dump($res->fetch());
+} else {
+    $res = $med->getElementsByKeyword("");
 }
 
 ?>
@@ -27,7 +29,39 @@ if(isset($_POST['search'])) {
     <button type="submit" name="search">Rechercher</button>
 </form>
 
-<?php if(isset($res)): ?>
+<?php if(isset($_GET['id'])):
+    //                ^ à changer car si l'utilisateur change l'id et qu'il existe pas en faisant la requête ça fou la merde
+    $valuesmed = $med->getElementById($_GET['id']);
+    $med->setElement(new Medecin($_GET['id'], $valuesmed['civilite'], $valuesmed['nom'], $valuesmed['prenom']));
+    echo var_dump($med->getElement()->toArray());
+    //TODO debug
+?>
+<form method="post">
+    <label for="civilite">Civilité</label>
+    <select name="civilite">
+        <option value="Homme">Homme</option>
+        <option value="Femme">Femme</option>
+        <option value="Autre">Autre</option>
+    </select>
+
+    <br>
+
+    <label for="name">Nom</label>
+    <input name="name" type="text" value="<?php echo $med->getElement()->toArray()['nom']?>">
+
+    <br>
+
+    <label for="surname">Prénom</label>
+    <input name="surname" type="text" value="<?php echo $med->getElement()->toArray()['prenom']?>">
+
+    <br>
+
+    <button name="modifDoc" type="submit">Modifier</button>
+
+</form>
+
+<?php else: ?>
+
 <table>
     <thead>
     <tr>
@@ -50,6 +84,7 @@ if(isset($_POST['search'])) {
     <?php } ?>
     </tbody>
 </table>
+
 <?php endif; ?>
 
 </body>

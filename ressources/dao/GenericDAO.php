@@ -37,6 +37,10 @@ abstract class GenericDAO {
         return $this->element;
     }
 
+    public function setElement($element) {
+        $this->element = $element;
+    }
+
     public function exists() {
         $selection = "SELECT * FROM ".$this->getTableName()." WHERE ";
         foreach($this->getColumns() as $info) {
@@ -91,33 +95,36 @@ abstract class GenericDAO {
      * @param $keyword le mot cle, si le champs est vide, renvoie toutes les valeurs de la table
      * @return PDOStatement le resultat de la recherche
      */
+
+    //TODO améliorer en mettant les valeurs dans le execute
     public function getElementsByKeyword($keyword) {
         if(empty($keyword)) {
-            $res = $this->connection->prepare('SELECT * FROM contacts');
+            $res = $this->connection->prepare('SELECT * FROM '.$this->getTableName());
             $res->execute();
         } else {
             $search = "SELECT * FROM ".$this->getTableName()." WHERE ";
 
             foreach($this->getColumns() as $info) {
-                $search .= $info." LIKE '%:keyword%' OR ";
+                $search .= $info." LIKE '%".$keyword."%' OR ";
             }
-            $search = substr($search, 0, -3);
+            $search = substr($search, 0, -4);
 
             $res = $this->connection->prepare($search);
-            $res->execute(array('keyword' => $keyword));
+            $res->execute();
         }
 
         return $res;
     }
 
     /**
-     * Recupere toutes les informations de l'entite
-     * @return PDOStatement
+     * Recuprere l'element correspondant a l'id passe en parametre
+     * @param $id l'id correspondant
+     * @return array avec les infos de l'element correspondant
      */
-    public function getAll() {
-        $req = $this->connection->prepare("SELECT * FROM ".$this->getTableName());
-        $req->execute();
-        return $req;
+    public function getElementById($id) {
+        $res = $this->connection->prepare('SELECt * FROM '.$this->getTableName().' WHERE '.$this->getIdName().' LIKE :id');
+        $res->execute(array("id" => $id));
+        return $res->fetch();
     }
 
     /**

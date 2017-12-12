@@ -1,11 +1,23 @@
 <?php
 
+session_start();
+
 require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');
 
 $med = new MedecinDAO(new Medecin(null, null, null, null));
+$updated = -1;
 
-if(isset($_POST['search'])) {
+if(isset($_POST['modifDoc'])) {
+    $med->setElement(new Medecin($_SESSION['id'], $_POST['civilite'], $_POST['nom'], $_POST['prenom']));
+    echo var_dump($med->getElement()->toArray());
+    $updated = $med->update();
+    unset($_SESSION['id']);
+} else if(isset($_GET['id'])) {
+    $_SESSION['id'] = $_GET['id'];
+    $valuesmed = $med->getElementById($_GET['id']);
+    $med->setElement(new Medecin($_GET['id'], $valuesmed['civilite'], $valuesmed['nom'], $valuesmed['prenom']));
+} else if(isset($_POST['search'])) {
     $res = $med->getElementsByKeyword($_POST['keyword']);
 } else {
     $res = $med->getElementsByKeyword("");
@@ -29,30 +41,26 @@ if(isset($_POST['search'])) {
     <button type="submit" name="search">Rechercher</button>
 </form>
 
-<?php if(isset($_GET['id'])):
-    //                ^ à changer car si l'utilisateur change l'id et qu'il existe pas en faisant la requête ça fou la merde
-    $valuesmed = $med->getElementById($_GET['id']);
-    $med->setElement(new Medecin($_GET['id'], $valuesmed['civilite'], $valuesmed['nom'], $valuesmed['prenom']));
-    echo var_dump($med->getElement()->toArray());
-    //TODO debug
-?>
+<?php if(isset($_GET['id'])): ?>
+
 <form method="post">
+
     <label for="civilite">Civilité</label>
     <select name="civilite">
-        <option value="Homme">Homme</option>
-        <option value="Femme">Femme</option>
-        <option value="Autre">Autre</option>
+        <option <?php if($med->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
+        <option <?php if($med->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
+        <option <?php if($med->getElement()->toArray()['civilite'] == "Autre") echo "selected=\"selected\""; ?> value="Autre">Autre</option>
     </select>
 
     <br>
 
-    <label for="name">Nom</label>
-    <input name="name" type="text" value="<?php echo $med->getElement()->toArray()['nom']?>">
+    <label for="nom">Nom</label>
+    <input name="nom" type="text" value="<?php echo $med->getElement()->toArray()['nom']?>">
 
     <br>
 
-    <label for="surname">Prénom</label>
-    <input name="surname" type="text" value="<?php echo $med->getElement()->toArray()['prenom']?>">
+    <label for="prenom">Prénom</label>
+    <input name="prenom" type="text" value="<?php echo $med->getElement()->toArray()['prenom']?>">
 
     <br>
 
@@ -61,6 +69,11 @@ if(isset($_POST['search'])) {
 </form>
 
 <?php else: ?>
+
+<?php
+    if($updated == 0) echo "Mise à jour failed";
+    if($updated == 1) echo "Mise à jour effectuée";
+?>
 
 <table>
     <thead>

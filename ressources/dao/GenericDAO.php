@@ -18,6 +18,7 @@ abstract class GenericDAO {
         $this->connection = Database::getInstance()->getConnection();
         $this->element = $element;
         $this->tableName = $tableName;
+        $this->idName = $idName;
         $this->columns = $columns;
     }
 
@@ -122,8 +123,12 @@ abstract class GenericDAO {
      * @return array avec les infos de l'element correspondant
      */
     public function getElementById($id) {
-        $res = $this->connection->prepare('SELECt * FROM '.$this->getTableName().' WHERE '.$this->getIdName().' LIKE :id');
+        $res = $this->connection->prepare('SELECT * FROM '.$this->getTableName().' WHERE '.$this->getIdName().' LIKE :id');
         $res->execute(array("id" => $id));
+        //$res = $res->fetch();
+        /*if($res[$this->getIdName()] == null) {
+            return null;
+        }*/
         return $res->fetch();
     }
 

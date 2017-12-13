@@ -10,18 +10,26 @@ $updated = -1;
 
 if(isset($_POST['modifDoc'])) {
     $med->setElement(new Medecin($_SESSION['id'], $_POST['civilite'], $_POST['nom'], $_POST['prenom']));
-    echo var_dump($med->getElement()->toArray());
-    $updated = $med->update();
+    if($med->update()) {
+        $updated = 1;
+    } else {
+        $updated = 0;
+    }
     unset($_SESSION['id']);
 } else if(isset($_GET['id'])) {
     $_SESSION['id'] = $_GET['id'];
     $valuesmed = $med->getElementById($_GET['id']);
-    $med->setElement(new Medecin($_GET['id'], $valuesmed['civilite'], $valuesmed['nom'], $valuesmed['prenom']));
+    if($valuesmed == null) {
+        header('Location: .');
+    } else {
+        $med->setElement(new Medecin($_GET['id'], $valuesmed['civilite'], $valuesmed['nom'], $valuesmed['prenom']));
+    }
 } else if(isset($_POST['search'])) {
     $res = $med->getElementsByKeyword($_POST['keyword']);
 } else {
     $res = $med->getElementsByKeyword("");
 }
+
 
 ?>
 
@@ -41,7 +49,7 @@ if(isset($_POST['modifDoc'])) {
     <button type="submit" name="search">Rechercher</button>
 </form>
 
-<?php if(isset($_GET['id'])): ?>
+<?php if(isset($_GET['id']) && $updated == -1): ?>
 
 <form method="post">
 
@@ -68,12 +76,11 @@ if(isset($_POST['modifDoc'])) {
 
 </form>
 
+<?php elseif($updated == 0): ?>
+    <p>Mise à jour failed</p>
+<?php elseif($updated == 1): ?>
+    <p>Mise à jour réussie</p>
 <?php else: ?>
-
-<?php
-    if($updated == 0) echo "Mise à jour failed";
-    if($updated == 1) echo "Mise à jour effectuée";
-?>
 
 <table>
     <thead>

@@ -4,7 +4,6 @@
     <list default="true" id="c30fc7ba-e23d-49b0-96bf-adf77cf97def" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifierMedecin/index.php" afterPath="$PROJECT_DIR$/modifierMedecin/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/Entity.php" afterPath="$PROJECT_DIR$/ressources/Entity.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/dao/GenericDAO.php" afterPath="$PROJECT_DIR$/ressources/dao/GenericDAO.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,29 +26,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modifierMedecin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-              <folding>
-                <marker date="1513072622216" expanded="true" signature="848:1316" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="855:874" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="855:1134" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="909:1023" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="1141:1156" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="1141:1316" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="1163:1293" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="1349:1986" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="1422:1478" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="1422:1859" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="2361:2605" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="2373:2502" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="2382:2489" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="2514:2605" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="2571:2605" ph="..." />
-                <marker date="1513072622216" expanded="true" signature="2740:2796" ph="..." />
-              </folding>
+            <state relative-caret-position="280">
+              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,8 +39,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,23 +49,23 @@
       <file leaf-file-name="GenericDAO.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ressources/dao/GenericDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="76" column="45" lean-forward="true" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+            <state relative-caret-position="260">
+              <caret line="67" column="24" lean-forward="true" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
               <folding>
-                <marker date="1513069480915" expanded="true" signature="1037:1082" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-                <marker date="1513069480915" expanded="true" signature="1587:1626" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-                <marker date="1513069480915" expanded="true" signature="1587:1670" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-                <marker date="1513069480915" expanded="true" signature="1587:1671" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-                <marker date="1513069480915" expanded="true" signature="1587:1703" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-                <marker date="1513069480915" expanded="true" signature="3032:3045" ph="SELECT * FRO... " />
-                <marker date="1513069480915" expanded="true" signature="3032:3046" ph="SELECT * FRO... ${$this-&gt;getTa}" />
-                <marker date="1513069480915" expanded="true" signature="3141:3154" ph="SELECT * FRO... " />
-                <marker date="1513069480915" expanded="true" signature="3141:3155" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
-                <marker date="1513069480915" expanded="true" signature="3141:3179" ph="SELECT * FRO... " />
-                <marker date="1513069480915" expanded="true" signature="3141:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-                <marker date="1513069480915" expanded="true" signature="3141:3187" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-                <marker date="1513069480915" expanded="true" signature="3759:3833" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
-                <marker date="1513069480915" expanded="true" signature="3759:3836" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+                <marker date="1513162045642" expanded="true" signature="1072:1117" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+                <marker date="1513162045642" expanded="true" signature="1622:1661" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+                <marker date="1513162045642" expanded="true" signature="1622:1705" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+                <marker date="1513162045642" expanded="true" signature="1622:1706" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+                <marker date="1513162045642" expanded="true" signature="1622:1738" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+                <marker date="1513162045642" expanded="true" signature="3031:3044" ph="SELECT * FRO... " />
+                <marker date="1513162045642" expanded="true" signature="3031:3045" ph="SELECT * FRO... ${$this-&gt;getTa}" />
+                <marker date="1513162045642" expanded="true" signature="3140:3153" ph="SELECT * FRO... " />
+                <marker date="1513162045642" expanded="true" signature="3140:3154" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
+                <marker date="1513162045642" expanded="true" signature="3140:3178" ph="SELECT * FRO... " />
+                <marker date="1513162045642" expanded="true" signature="3140:3185" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+                <marker date="1513162045642" expanded="true" signature="3140:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+                <marker date="1513162045642" expanded="true" signature="3758:3832" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+                <marker date="1513162045642" expanded="true" signature="3758:3835" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
               </folding>
             </state>
           </provider>
@@ -92,7 +74,7 @@
       <file leaf-file-name="MedecinDAO.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ressources/dao/MedecinDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="-8">
               <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
@@ -102,17 +84,17 @@
       <file leaf-file-name="Medecin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ressources/Medecin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="0">
               <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Entity.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Entity.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ressources/Entity.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="-8">
               <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
               <folding />
             </state>
@@ -122,7 +104,7 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajouterMedecin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
+            <state relative-caret-position="0">
               <caret line="80" column="7" lean-forward="false" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
               <folding />
             </state>
@@ -164,10 +146,10 @@
         <option value="$PROJECT_DIR$/ressources/dao/MedecinDAO.php" />
         <option value="$PROJECT_DIR$/ajouterMedecin/index.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/ressources/dao/GenericDAO.php" />
         <option value="$PROJECT_DIR$/ressources/Medecin.php" />
-        <option value="$PROJECT_DIR$/modifierMedecin/index.php" />
         <option value="$PROJECT_DIR$/ressources/Entity.php" />
+        <option value="$PROJECT_DIR$/ressources/dao/GenericDAO.php" />
+        <option value="$PROJECT_DIR$/modifierMedecin/index.php" />
       </list>
     </option>
   </component>
@@ -200,7 +182,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,12 +215,14 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -279,11 +262,12 @@
       <workItem from="1512921066361" duration="4333000" />
       <workItem from="1512994130749" duration="2430000" />
       <workItem from="1513067856933" duration="4840000" />
+      <workItem from="1513160009953" duration="3378000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39943000" />
+    <option name="totallyTimeSpent" value="43321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="10" width="1904" height="1062" extended-state="0" />
@@ -333,20 +317,20 @@
         <state relative-caret-position="765">
           <caret line="45" column="51" lean-forward="false" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
           <folding>
-            <marker date="1513069480915" expanded="true" signature="1037:1082" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="1587:1626" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1670" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1671" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1703" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="3032:3045" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3032:3046" ph="SELECT * FRO... ${$this-&gt;getTa}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3154" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3141:3155" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3179" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3141:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3187" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3759:3833" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3759:3836" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="1072:1117" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="1622:1661" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1705" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1706" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1738" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="3031:3044" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3031:3045" ph="SELECT * FRO... ${$this-&gt;getTa}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3153" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3140:3154" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3178" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3140:3185" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3758:3832" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3758:3835" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
           </folding>
         </state>
       </provider>
@@ -363,24 +347,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <marker date="1513072622216" expanded="true" signature="848:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:874" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:1134" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="909:1023" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1156" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1163:1293" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1349:1986" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1478" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1859" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2361:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2373:2502" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2382:2489" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2514:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2571:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2740:2796" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -444,24 +411,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <marker date="1513072622216" expanded="true" signature="848:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:874" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:1134" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="909:1023" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1156" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1163:1293" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1349:1986" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1478" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1859" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2361:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2373:2502" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2382:2489" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2514:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2571:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2740:2796" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -494,20 +444,20 @@
         <state relative-caret-position="34">
           <caret line="2" column="77" lean-forward="false" selection-start-line="2" selection-start-column="77" selection-end-line="2" selection-end-column="77" />
           <folding>
-            <marker date="1513069480915" expanded="true" signature="1037:1082" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="1587:1626" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1670" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1671" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1703" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="3032:3045" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3032:3046" ph="SELECT * FRO... ${$this-&gt;getTa}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3154" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3141:3155" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3179" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3141:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3187" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3759:3833" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3759:3836" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="1072:1117" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="1622:1661" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1705" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1706" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1738" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="3031:3044" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3031:3045" ph="SELECT * FRO... ${$this-&gt;getTa}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3153" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3140:3154" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3178" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3140:3185" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3758:3832" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3758:3835" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
           </folding>
         </state>
       </provider>
@@ -557,24 +507,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <marker date="1513072622216" expanded="true" signature="848:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:874" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:1134" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="909:1023" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1156" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1163:1293" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1349:1986" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1478" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1859" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2361:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2373:2502" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2382:2489" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2514:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2571:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2740:2796" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -649,7 +582,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ajouterMedecin/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
+        <state relative-caret-position="0">
           <caret line="80" column="7" lean-forward="false" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
           <folding />
         </state>
@@ -657,71 +590,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ressources/dao/GenericDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="76" column="45" lean-forward="true" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
-          <folding>
-            <marker date="1513069480915" expanded="true" signature="1037:1082" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="1587:1626" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1670" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1671" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="1587:1703" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
-            <marker date="1513069480915" expanded="true" signature="3032:3045" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3032:3046" ph="SELECT * FRO... ${$this-&gt;getTa}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3154" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3141:3155" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3179" ph="SELECT * FRO... " />
-            <marker date="1513069480915" expanded="true" signature="3141:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3141:3187" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3759:3833" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
-            <marker date="1513069480915" expanded="true" signature="3759:3836" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modifierMedecin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <marker date="1513072622216" expanded="true" signature="848:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:874" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="855:1134" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="909:1023" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1156" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1141:1316" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1163:1293" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1349:1986" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1478" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="1422:1859" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2361:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2373:2502" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2382:2489" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2514:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2571:2605" ph="..." />
-            <marker date="1513072622216" expanded="true" signature="2740:2796" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ressources/dao/MedecinDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ressources/Medecin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="0">
           <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
           <folding />
         </state>
@@ -729,8 +606,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ressources/Entity.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="-8">
           <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ressources/dao/MedecinDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ressources/dao/GenericDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="67" column="24" lean-forward="true" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+          <folding>
+            <marker date="1513162045642" expanded="true" signature="1072:1117" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="1622:1661" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1705" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1706" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="1622:1738" ph="INSERT INTO ${$this-&gt;getTableName()}... " />
+            <marker date="1513162045642" expanded="true" signature="3031:3044" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3031:3045" ph="SELECT * FRO... ${$this-&gt;getTa}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3153" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3140:3154" ph="SELECT * FRO... ${$res = $this-&gt;connection-&gt;prepare(&#10;            'SELECT * FROM contacts&#10;             WHERE nom LIKE \'%'.$keyword.'%\'&#10;                OR prenom LIKE \'%'.$keyword.'%\'&#10;                OR adresse LIKE \'%'.$keyword.'%\'&#10;                OR codepostal LIKE \'%'.$keyword.'%\'&#10;                OR ville LIKE \'%'.$keyword.'%\'&#10;                OR tel LIKE \'%'.$keyword.'%\';')}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3178" ph="SELECT * FRO... " />
+            <marker date="1513162045642" expanded="true" signature="3140:3185" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3140:3186" ph="SELECT * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3758:3832" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+            <marker date="1513162045642" expanded="true" signature="3758:3835" ph="SELECt * FRO... ${$this-&gt;getTableName()}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modifierMedecin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding />
         </state>
       </provider>

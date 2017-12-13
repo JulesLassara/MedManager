@@ -1,5 +1,6 @@
 <?php
 
+// TODO MODIFIER LE CHEMIN D'ACCES
 require('/opt/lampp/htdocs/GestionnaireCabinetMedical/ressources/Database.php');
 
 abstract class GenericDAO {
@@ -70,14 +71,12 @@ abstract class GenericDAO {
     }
 
 
-    // TODO A TESTER !
-
     /**
      * Met a jour l'element courant
      * @return bool = 1 si succes, 0 si echec
      */
     public function update() {
-        //Preparation insertion
+        //Preparation maj
         $update = "UPDATE ".$this->getTableName()." SET ";
         foreach($this->getColumns() as $info) {
             $update .= $info." = :".$info.",";
@@ -85,7 +84,7 @@ abstract class GenericDAO {
         $update = substr($update, 0, -1);
         $update .= " WHERE ".$this->getIdName()." = :".$this->getIdName().";";
         $req = $this->connection->prepare($update);
-        //Insertion
+        //Maj
         $status = $req->execute($this->getElement()->toArray());
 
         return $status;
@@ -125,11 +124,11 @@ abstract class GenericDAO {
     public function getElementById($id) {
         $res = $this->connection->prepare('SELECT * FROM '.$this->getTableName().' WHERE '.$this->getIdName().' LIKE :id');
         $res->execute(array("id" => $id));
-        //$res = $res->fetch();
-        /*if($res[$this->getIdName()] == null) {
+        $res = $res->fetch();
+        if($res[$this->getIdName()] == null) {
             return null;
-        }*/
-        return $res->fetch();
+        }
+        return $res;
     }
 
     /**

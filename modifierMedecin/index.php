@@ -8,12 +8,14 @@ require('../ressources/dao/MedecinDAO.php');
 $med = new MedecinDAO(new Medecin(null, null, null, null));
 $updated = -1;
 
-if(isset($_POST['modifDoc'])) {
+if(isset($_POST['modifDoc']) && isset($_SESSION['id'])) {
     $med->setElement(new Medecin($_SESSION['id'], $_POST['civilite'], $_POST['nom'], $_POST['prenom']));
     if($med->update()) {
         $updated = 1;
+        $res = $med->getElementsByKeyword("");
     } else {
         $updated = 0;
+        $res = $med->getElementsByKeyword("");
     }
     unset($_SESSION['id']);
 } else if(isset($_GET['id'])) {
@@ -44,11 +46,6 @@ if(isset($_POST['modifDoc'])) {
 </head>
 <body>
 
-<form method="POST">
-    <input type="text" name="keyword" placeholder="Ex: John">
-    <button type="submit" name="search">Rechercher</button>
-</form>
-
 <?php if(isset($_GET['id']) && $updated == -1): ?>
 
 <form method="post">
@@ -76,11 +73,34 @@ if(isset($_POST['modifDoc'])) {
 
 </form>
 
-<?php elseif($updated == 0): ?>
-    <p>Mise à jour failed</p>
-<?php elseif($updated == 1): ?>
-    <p>Mise à jour réussie</p>
-<?php else: ?>
+<?php else:
+
+    if($updated == 0) {
+        echo "Mise à jour failed";
+    } elseif ($updated == 1) {
+        echo "Mise à jour réussie";
+    }
+
+    if(isset($_SESSION['deleted'])) {
+        switch($_SESSION['deleted']) {
+            case 1:
+                echo "Suppression effectuée";
+                break;
+            case 2:
+                echo "Echec de suppression, veuillez contacter l'admin";
+                break;
+            case 3:
+                echo "Médecin inexistant.";
+                break;
+        }
+        unset($_SESSION['deleted']);
+    }
+?>
+
+<form method="POST">
+    <input type="text" name="keyword" placeholder="Ex: John">
+    <button type="submit" name="search">Rechercher</button>
+</form>
 
 <table>
     <thead>
@@ -89,6 +109,7 @@ if(isset($_POST['modifDoc'])) {
         <th>Nom</th>
         <th>Prénom</th>
         <th>Modifier</th>
+        <th>Supprimer</th>
     </tr>
     </thead>
     <tbody>
@@ -99,6 +120,9 @@ if(isset($_POST['modifDoc'])) {
             <td><?php echo $data['prenom'] ?></td>
             <td>
                 <a href="index.php?id=<?php echo $data['id_medecin']?>">Modifier</a>
+            </td>
+            <td>
+                <a href="../suppression/medecin.php?id=<?php echo $data['id_medecin']?>">Supprimer</a>
             </td>
         </tr>
     <?php } ?>

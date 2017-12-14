@@ -13,12 +13,10 @@
 
 <form method="post">
     <a href="ajouterUsager">Ajouter un usager</a>
-    <a href="modifierUsager">Modifier un usager</a>
-    <a href="supprimerUsager">Supprimer un usager</a>
+    <a href="modifierUsager">Gérer les patients</a>
     <br>
     <a href="ajouterMedecin">Ajouter un médecin</a>
-    <a href="modifierMedecin">Modifier un médecin</a>
-    <a href="supprimerMedecin">Supprimer un médecin</a>
+    <a href="modifierMedecin">Gérer les médecins</a>
 </form>
 
 </body>

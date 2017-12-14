@@ -54,6 +54,13 @@ abstract class GenericDAO {
         return $req->fetch();
     }
 
+    public function existsFromId() {
+        $selection = "SELECT * FROM ".$this->getTableName()." WHERE ".$this->getIdName()." LIKE :id";
+        $req = $this->connection->prepare($selection);
+        $req->execute(array("id" => $this->getElement()->getId()));
+        return $req->fetch();
+    }
+
 
     /**
      * Insertion de l'objet dans la base de donnees
@@ -150,6 +157,19 @@ abstract class GenericDAO {
         }
         $result = substr($result, 0,-2);
         return $result;
+    }
+
+    /**
+     * Supprime l'element correspondant à l'ID courant
+     */
+    public function delete() {
+        $delete = "DELETE FROM ".$this->getTableName()." WHERE ".$this->getIdName()." LIKE :id";
+        // Preparation de la requete
+        $req = $this->connection->prepare($delete);
+        // Execution de la requete
+        $status = $req->execute(array("id" => $this->getElement()->getId()));
+
+        return $status;
     }
 
 }

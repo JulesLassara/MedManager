@@ -1,5 +1,7 @@
 <?php
 
+require('Entity.php');
+
 class Usager extends Entity {
 
     private $adresse;

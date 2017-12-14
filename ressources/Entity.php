@@ -16,7 +16,7 @@ abstract class Entity implements DBTable {
      * @param $prenom
      */
     public function __construct($id, $civilite, $nom, $prenom) {
-        $this->id = $id; //TODO ici le soucis de l'id ?
+        $this->id = $id;
         $this->civilite = $civilite;
         $this->nom = $nom;
         $this->prenom = $prenom;

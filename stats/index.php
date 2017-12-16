@@ -21,8 +21,8 @@ if(!isConnected()) {
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Consultations</h1>
-              <span class="subheading">Gestion des consultations</span>
+              <h1>Statistiques</h1>
+              <span class="subheading">Quelques chiffres sur l'activité du centre</span>
             </div>
           </div>
         </div>

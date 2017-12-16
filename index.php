@@ -1,5 +1,6 @@
 <?php
-session_start();
+require('ressources/login/logincheck.php');
+
 if(isset($_POST['connect'])) {
   if(empty($_POST['login'])) {
     $loginmissing = 1;
@@ -14,6 +15,7 @@ if(isset($_POST['connect'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,9 +44,7 @@ if(isset($_POST['connect'])) {
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa fa-bars"></i>
         </button>
-      <?php
-      if(isset($_SESSION['login']) && isset($_SESSION['password'])):
-        if($_SESSION['login'] == "admin" && $_SESSION['password'] == "admin"): ?>
+      <?php if(isConnected()): ?>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -65,10 +65,7 @@ if(isset($_POST['connect'])) {
           </ul>
         </div>
       </div>
-    <?php
-      endif;
-    endif;
-    ?>
+    <?php endif; ?>
     </nav>
 
     <!-- Page Header -->
@@ -90,18 +87,12 @@ if(isset($_POST['connect'])) {
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        <?php
-        if(isset($_SESSION['login']) && isset($_SESSION['password'])){
-          if($_SESSION['login'] == "admin" && $_SESSION['password'] == "admin") { ?>
+        <?php if(isConnected()): ?>
             <p>Bienvenue. Cet outil de travail vous permet de gérer les médecins, les usagers ainsi que les consultations prévues au sein du centre. Pour tout problème technique ou d'utilisation, veuillez contacter Jules Lassara.</p>
-          <?php } else { ?>
+        <?php elseif(loginFailed()): ?>
             <p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Identifiant et/ou mot de passe incorrect.</p>
-          <?php
-                  unset($_SESSION['login']);
-                  unset($_SESSION['password']);
-                }
-        }
-        if(!isset($_SESSION['login']) && !isset($_SESSION['password'])) {?>
+        <?php endif;
+              if(!isConnected()): ?>
           <p>Cet outil de travail est reservé au personnel du centre médical. Veuillez vous identifier pour continuer votre navigation.</p>
           <form method="POST">
             <div class="control-group">
@@ -123,23 +114,14 @@ if(isset($_POST['connect'])) {
               <button type="submit" class="btn btn-primary" name="connect">Se connecter</button>
             </div>
           </form>
-        <?php } ?>
+        <?php endif; ?>
         </div>
       </div>
     </div>
 
     <hr>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <p class="copyright text-muted">Copyright &copy; Jules Lassara 2017</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php include('ressources/inc/footer.html'); ?>
 
     <!-- Bootstrap JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

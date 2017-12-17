@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - Clean Blog v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/clean-blog)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/master/LICENSE)
- */
 body {
   font-size: 20px;
   color: #212529;
@@ -320,4 +315,42 @@ footer {
 
 .btn-lg {
   font-size: 16px;
-  padding: 25px 35px; }
+  padding: 25px 35px;
+}
+
+/* MORE */
+
+.icon-row-card {
+  width: 50px;
+  text-align: center;
+  height: 50px;
+  color: #0085A1;
+}
+
+.card-title, .card-footer {
+  text-align: center;
+}
+
+/* ANIMATION HOVER LINK */
+.bull_over:hover span, .bull_over:focus span {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+}
+
+.bull_over span {
+    position: absolute;
+    width: 220px;
+    right: 350px;
+    color: white;
+    background: rgba(0, 0, 0, .9);
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+    transform: scale(0) rotate(-12deg);
+    transition: all .25s;
+    opacity: 0;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+}
+/* END ANIMATION HOVER LINK */

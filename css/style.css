@@ -339,6 +339,10 @@ footer {
   margin: auto;
 }
 
+.submit-right {
+  float: right;
+}
+
 /* ANIMATION HOVER LINK */
 .bull_over:hover span, .bull_over:focus span {
     transform: scale(1) rotate(0);

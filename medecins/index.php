@@ -64,11 +64,83 @@ if(isset($_POST['modifDoc']) && isset($_SESSION['id'])) {
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
 
+
+            <?php if(isset($_GET['id']) && $updated == -1): ?>
+
+            <form method="POST">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                </div>
+            </form>
+
+            <form method="POST">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Civilité</label>
+                        <select name="civilite" class="form-control">
+                            <option <?php if($med->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
+                            <option <?php if($med->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
+                            <option <?php if($med->getElement()->toArray()['civilite'] == "Autre") echo "selected=\"selected\""; ?> value="Autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="nom">Nom</label>
+                        <input name="nom" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['nom']?>">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="prenom">Prénom</label>
+                        <input name="prenom" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['prenom']?>">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group submit-right">
+                    <button type="submit" class="btn btn-primary" name="modifDoc">Modifier</button>
+                </div>
+            </form>
+
+
+            <?php else:
+            if($updated == 0) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="fa fa-exclamation-circle"></i> Erreur : Échec de la mise à jour.
+                </div>
+            <?php } elseif ($updated == 1) { ?>
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle"></i> Succès : Mise à jour effectuée.
+                </div>
+            <?php }
+
+            if(isset($_SESSION['deleted'])) {
+                switch($_SESSION['deleted']) {
+                    case 1: ?>
+                        <div class="alert alert-success" role="alert">
+                            <i class="fa fa-check-circle"></i> Succès : Suppression effectuée.
+                        </div>
+                        <?php break;
+                    case 2: ?>
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Échec de la suppression.
+                        </div>
+                        <?php break;
+                    case 3: ?>
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Médecin inexistant.
+                        </div>
+                        <?php break;
+                }
+                unset($_SESSION['deleted']);
+            }
+            ?>
+
             <form method="POST" class="form-inline">
                     <div class="form-group floating-label-form-group control searchMed">
-                        <input type="text" class="form-control" placeholder="Mot-clé" name="login">
+                        <input type="text" class="form-control" placeholder="Exemple : John" name="keyword">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="connect">Rechercher</button>
+                    <button type="submit" class="btn btn-primary" name="search">Rechercher</button>
                     <div class="addMed">
                         <a href="addMedecin.php" class="btn btn-info" role="button" aria-pressed="true">Ajouter un médecin</a>
                     </div>
@@ -110,55 +182,8 @@ if(isset($_POST['modifDoc']) && isset($_SESSION['id'])) {
                     <br>
                 <?php $nb = 1;
                 } else { $nb ++; }
-            } ?>
-
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title">Docteur Nom Prénom</h4>
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td class="icon-row-card bull_over">
-                                    <i class="fa fa-venus"></i>
-                                    <span class="popup-text">Sexe</span>
-                                </td>
-                                <td>Femme</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            <a href="#" class="card-link"><i class="fa fa-pencil"></i> Modifier</a>
-                            <a href="#" class="card-link"><i class="fa fa-times-circle-o"></i> Supprimer</a>
-                        </small>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title">Docteur Nom Prénom</h4>
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td class="icon-row-card bull_over">
-                                    <i class="fa fa-venus"></i>
-                                    <span class="popup-text">Sexe</span>
-                                </td>
-                                <td>Femme</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            <a href="#" class="card-link"><i class="fa fa-pencil"></i> Modifier</a>
-                            <a href="#" class="card-link"><i class="fa fa-times-circle-o"></i> Supprimer</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
+            }
+            endif; ?>
         </div>
       </div>
     </div>

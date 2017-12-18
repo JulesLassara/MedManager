@@ -18,15 +18,15 @@ if(isset($_GET['id'])) {
     if($rmed->existsFromId()) {
         if($rmed->delete()) {
             $_SESSION['deleted'] = 1;
-            header('Location: ../modifierMedecin');
+            header('Location: .');
         } else {
             $_SESSION['deleted'] = 2;
-            header('Location: ../modifierMedecin');
+            header('Location: .');
         }
     } else {
         $_SESSION['deleted'] = 3;
-        header('Location: ../modifierMedecin');
+        header('Location: .');
     }
 } else {
-    header('Location: ../modifierMedecin');
+    header('Location: .');
 }

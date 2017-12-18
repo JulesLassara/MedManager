@@ -327,8 +327,16 @@ footer {
   color: #0085A1;
 }
 
+.card-title {
+  height: 45px;
+}
+
 .card-title, .card-footer {
   text-align: center;
+}
+
+.addMed, .searchMed {
+  margin: auto;
 }
 
 /* ANIMATION HOVER LINK */

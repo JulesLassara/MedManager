@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+require('../ressources/login/logincheck.php');
+if(!isConnected()) {
+    header('Location: ..');
+}
 
 require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');

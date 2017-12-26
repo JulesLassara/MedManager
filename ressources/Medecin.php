@@ -1,6 +1,6 @@
 <?php
 
-require('Entity.php');
+require_once('Entity.php');
 
 class Medecin extends Entity {
 

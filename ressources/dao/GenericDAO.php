@@ -1,7 +1,7 @@
 <?php
 
 // TODO MODIFIER LE CHEMIN D'ACCES
-require('/opt/lampp/htdocs/GestionnaireCabinetMedical/ressources/Database.php');
+require_once('/opt/lampp/htdocs/GestionnaireCabinetMedical/ressources/Database.php');
 
 abstract class GenericDAO {
 
@@ -43,7 +43,7 @@ abstract class GenericDAO {
         $this->element = $element;
     }
 
-    public function exists() {
+    public function exists() { //todo modif pour usager --> check uniquement numéro de sécu
         $selection = "SELECT * FROM ".$this->getTableName()." WHERE ";
         foreach($this->getColumns() as $info) {
             $selection .= $info." = :".$info." AND ";

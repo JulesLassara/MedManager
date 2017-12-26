@@ -113,6 +113,8 @@ if(isset($_POST['addDoc'])) {
             </div>
         </div>
 
+        <hr>
+
         <?php include('../ressources/inc/footer.html'); ?>
 
         <?php include('../ressources/inc/scripts.html'); ?>

@@ -1,6 +1,6 @@
 <?php
 
-require('DBTable.php');
+require_once('DBTable.php');
 
 abstract class Entity implements DBTable {
 

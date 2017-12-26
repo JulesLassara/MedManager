@@ -1,6 +1,6 @@
 <?php
 
-require('GenericDAO.php');
+require_once('GenericDAO.php');
 
 class MedecinDAO extends GenericDAO {
 

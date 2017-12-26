@@ -5,6 +5,12 @@ require('../ressources/dao/UsagerDAO.php');
 
 session_start();
 
+require_once('../ressources/Medecin.php');
+require_once('../ressources/dao/MedecinDAO.php');
+
+$listmed = new MedecinDAO(new Medecin(null, null, null, null));
+$rlistmed = $listmed->getElementsByKeyword("");
+
 if(isset($_POST['addUsa'])) {
     if(!empty($_POST['civilite'])
         && !empty($_POST['name'])
@@ -17,112 +23,182 @@ if(isset($_POST['addUsa'])) {
         $usa = new Usager(null, $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu'], $_POST['medref']);
         $rusa = new UsagerDAO($usa);
         if($rusa->exists()) {
-            $_SESSION['infoUsa'] = 3;
+            $exists = 1;
         } else {
-            $_SESSION['infoUsa'] = $rusa->insert();
+            $_SESSION['added'] = $rusa->insert();
+            header('Location: .');
         }
         unset($_POST);
     } else {
-        $_SESSION['infoUsa'] = 2;
+        if (empty($_POST['civilite'])) {
+            $civilitemissing = 1;
+        }
+
+        if (empty($_POST['name'])) {
+            $namemissing = 1;
+        }
+
+        if (empty($_POST['surname'])) {
+            $surnamemissing = 1;
+        }
+
+        if (empty($_POST['address'])) {
+            $addressmissing = 1;
+        }
+
+        if (empty($_POST['dateborn'])) {
+            $datebornmissing = 1;
+        }
+
+        if (empty($_POST['placeborn'])) {
+            $placebornmissing = 1;
+        }
+
+        if (empty($_POST['numsecu'])) {
+            $numsecumissing = 1;
+        }
     }
-} else {
-    // TODO régler soucis require (conflits)
-    require_once('../ressources/Medecin.php');
-    require_once('../ressources/dao/MedecinDAO.php');
-
-    $listmed = new MedecinDAO(new Medecin(null, null, null, null));
-
-    $_SESSION['infoUsa'] = 4;
 }
-
 ?>
 
     <!doctype html>
     <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>GCM | Ajouter un usager</title>
-    </head>
+
+    <?php include('../ressources/inc/head.html'); ?>
+
     <body>
 
-    <h1>Ajouter un usager</h1>
+    <?php include('../ressources/inc/nav.html'); ?>
 
-    <?php
-    switch($_SESSION['infoUsa']) {
-        case 0:
-            echo "Erreur: Insertion impossible.";
-            break;
-        case 1:
-            echo "Succès: Usager ajouté.";
-            break;
-        case 2:
-            echo "Attention: Veuillez renseigner tous les champs.";
-            break;
-        case 3:
-            echo "Erreur: Usager déjà existant.";
-            break;
-    }
-    echo "<br>";
-    ?>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Usagers</h1>
+                        <span class="subheading">Ajout d'un usager</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <form method="post">
-        <label for="civilite">Civilité</label>
-        <select name="civilite">
-            <option value="Homme">Homme</option>
-            <option value="Femme">Femme</option>
-            <option value="Autre">Autre</option>
-        </select>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <?php if(isset($exists)) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fa fa-exclamation-circle"></i> Erreur : Usager déjà existant.
+                    </div>
+                    <?php unset($exists);
+                }
+                ?>
 
-        <br>
+                <form method="POST" action=".">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                    </div>
+                </form>
 
-        <label for="name">Nom</label>
-        <input name="name" type="text">
+                <form method="POST">
 
-        <br>
+                    <!-- Civilite -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Civilité</label>
+                            <?php if(isset($civilitemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <select name="civilite" class="form-control">
+                                <option value="Homme">Homme</option>
+                                <option value="Femme">Femme</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <label for="surname">Prénom</label>
-        <input name="surname" type="text">
+                    <!-- Nom -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Nom</label>
+                            <?php if(isset($namemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <input name="name" type="text" class="form-control" placeholder="Nom">
+                        </div>
+                    </div>
 
-        <br>
+                    <!-- Prenom -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Prénom</label>
+                            <?php if(isset($surnamemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <input name="surname" type="text" class="form-control" placeholder="Prénom">
+                        </div>
+                    </div>
 
-        <label for="address">Adresse</label>
-        <input name="address" type="text">
+                    <!-- Adresse -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Adresse</label>
+                            <?php if(isset($addressmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <input name="address" type="text" class="form-control" placeholder="Adresse">
+                        </div>
+                    </div>
 
-        <br>
+                    <!-- Date de naissance -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Adresse</label>
+                            <?php if(isset($datebornmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <input name="dateborn" type="date" class="form-control" placeholder="Date de naissance">
+                        </div>
+                    </div>
 
-        <label for="dateborn">Date de naissance</label>
-        <input name="dateborn" type="date">
+                    <!-- Lieu de naissance -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Lieu de naissance</label>
+                            <?php if(isset($placebornmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <input name="placeborn" type="text" class="form-control" placeholder="Lieu de naissance">
+                        </div>
+                    </div>
 
-        <br>
+                    <!-- Numero de securite sociale -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Numéro de sécurité sociale</label>
+                            <?php if(isset($numsecumissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                            <input name="numsecu" type="text" class="form-control" placeholder="Numéro de sécurité sociale">
+                        </div>
+                    </div>
 
-        <label for="placeborn">Lieu de naissance</label>
-        <input name="placeborn" type="text">
+                    <!-- Médecin référent -->
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Médecin référent</label>
+                            <select name="medref" class="form-control">
+                                <option selected="selected" value="Aucun">Aucun</option>
+                                <?php while($data = $rlistmed->fetch()) { ?>
+                                    <option value="<?php echo $data['id_medecin']; ?>"><?php echo "Docteur ".$data['nom']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
 
-        <br>
+                    <br>
 
-        <label for="numsecu">Numéro de sécurité sociale</label>
-        <input name="numsecu" type="text">
+                    <div class="form-group submit-right">
+                        <button type="submit" class="btn btn-primary" name="addUsa">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-        <br>
+    <hr>
 
-        <label for="medref">Médecin référent</label>
-        <select name="medref">
-            <?php while($data = $listmed->getElementsByKeyword("")->fetch()) { ?>
-                <option value="<?php echo $data['id_medecin']?>"><?php echo "Docteur ".$data['nom'] ?></option>
-            <?php } ?>
-        </select>
-        <br>
+    <?php include('../ressources/inc/footer.html'); ?>
 
-        <button name="addUsa" type="submit">Ajouter</button>
-
-    </form>
+    <?php include('../ressources/inc/scripts.html'); ?>
 
     </body>
     </html>
-
-<?php
-unset($_SESSION['infoUsa']);
-?>

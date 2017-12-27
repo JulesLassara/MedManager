@@ -4,32 +4,30 @@ session_start();
 
 require('../ressources/Usager.php');
 require('../ressources/dao/UsagerDAO.php');
+require('../ressources/Medecin.php');
+require('../ressources/dao/MedecinDAO.php');
 
 $usa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
-$updated = -1;
 
-if(isset($_POST['modifUsager']) && isset($_SESSION['id'])) {
-    $usa->setElement(new Usager($_SESSION['id'], $_POST['civilite'], $_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['datenaissance'], $_POST['lieunaissance'], $_POST['numsecu'], $_POST['medecinref']));
-    if($usa->update()) {
-        $updated = 1;
-        $res = $usa->getElementsByKeyword("");
+if(isset($_POST['modifUsa'])) {
+    $med->setElement(new Usager($_SESSION['id'], $_POST['civilite'], $_POST['nom'], $_POST['prenom']));
+    if($med->update()) {
+        $_SESSION['updated'] = 1;
     } else {
-        $updated = 0;
-        $res = $usa->getElementsByKeyword("");
+        $_SESSION['updated'] = 0;
     }
     unset($_SESSION['id']);
+    header('Location: .');
 } else if(isset($_GET['id'])) {
     $_SESSION['id'] = $_GET['id'];
     $valuesusa = $usa->getElementById($_GET['id']);
-    if($valuesusa == null) {
+    if($valuesmed == null) {
         header('Location: .');
     } else {
-        $usa->setElement(new Usager($_GET['id'], $valuesusa['civilite'], $valuesusa['nom'], $valuesusa['prenom'], $valuesusa['adresse'], $valuesusa['datenaissance'], $valuesusa['lieunaissance'], $valuesusa['numsecu'], $valuesusa['medecinref']));
+        $med->setElement(new Medecin($_GET['id'], $valuesmed['civilite'], $valuesmed['nom'], $valuesmed['prenom']));
     }
-} else if(isset($_POST['search'])) {
-    $res = $usa->getElementsByKeyword($_POST['keyword']);
 } else {
-    $res = $usa->getElementsByKeyword("");
+    header('Location: .');
 }
 
 
@@ -37,99 +35,72 @@ if(isset($_POST['modifUsager']) && isset($_SESSION['id'])) {
 
 <!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GCM | Modifier un médecin</title>
-</head>
+
+<?php include('../ressources/inc/head.html'); ?>
+
 <body>
 
-<?php if(isset($_GET['id']) && $updated == -1): ?>
+<?php include('../ressources/inc/nav.html'); ?>
 
-    <form method="post">
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Médecins</h1>
+                    <span class="subheading">Ajout d'un médecin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <label for="civilite">Civilité</label>
-        <select name="civilite">
-            <option <?php if($usa->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
-            <option <?php if($usa->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
-            <option <?php if($usa->getElement()->toArray()['civilite'] == "Autre") echo "selected=\"selected\""; ?> value="Autre">Autre</option>
-        </select>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <form method="POST" action=".">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                </div>
+            </form>
 
-        <br>
+            <form method="POST">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Civilité</label>
+                        <select name="civilite" class="form-control">
+                            <option <?php if($med->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
+                            <option <?php if($med->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
+                            <option <?php if($med->getElement()->toArray()['civilite'] == "Autre") echo "selected=\"selected\""; ?> value="Autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="nom">Nom</label>
+                        <input name="nom" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['nom']?>">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="prenom">Prénom</label>
+                        <input name="prenom" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['prenom']?>">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group submit-right">
+                    <button type="submit" class="btn btn-primary" name="modifDoc">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-        <label for="nom">Nom</label>
-        <input name="nom" type="text" value="<?php echo $usa->getElement()->toArray()['nom']?>">
+<?php include('../ressources/inc/footer.html'); ?>
 
-        <br>
-
-        <label for="prenom">Prénom</label>
-        <input name="prenom" type="text" value="<?php echo $usa->getElement()->toArray()['prenom']?>">
-
-        <br>
-
-        <button name="modifUsager" type="submit">Modifier</button>
-
-    </form>
-
-<?php else:
-
-    if($updated == 0) {
-        echo "Mise à jour failed";
-    } elseif ($updated == 1) {
-        echo "Mise à jour réussie";
-    }
-
-    if(isset($_SESSION['deleted'])) {
-        switch($_SESSION['deleted']) {
-            case 1:
-                echo "Suppression effectuée";
-                break;
-            case 2:
-                echo "Echec de suppression, veuillez contacter l'admin";
-                break;
-            case 3:
-                echo "Médecin inexistant.";
-                break;
-        }
-        unset($_SESSION['deleted']);
-    }
-    ?>
-
-    <form method="POST">
-        <input type="text" name="keyword" placeholder="Ex: John">
-        <button type="submit" name="search">Rechercher</button>
-    </form>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Civilité</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php while($data = $res->fetch()) { ?>
-            <tr>
-                <td><?php echo $data['civilite'] ?></td>
-                <td><?php echo $data['nom'] ?></td>
-                <td><?php echo $data['prenom'] ?></td>
-                <td>
-                    <a href="index.php?id=<?php echo $data['id_medecin']?>">Modifier</a>
-                </td>
-                <td>
-                    <a href="../suppression/medecin.php?id=<?php echo $data['id_medecin']?>">Supprimer</a>
-                </td>
-            </tr>
-        <?php } ?>
-        </tbody>
-    </table>
-
-<?php endif; ?>
+<?php include('../ressources/inc/scripts.html'); ?>
 
 </body>
 </html>

@@ -5,9 +5,12 @@ if(!isConnected()) {
 }
 
 require('../ressources/Usager.php');
+require('../ressources/Medecin.php');
 require('../ressources/dao/UsagerDAO.php');
+require('../ressources/dao/MedecinDAO.php');
 
 $usa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
+$med = new MedecinDAO(new Medecin(null, null, null, null));
 
 if(isset($_POST['search'])) {
     $res = $usa->getElementsByKeyword($_POST['keyword']);
@@ -155,7 +158,7 @@ if(isset($_POST['search'])) {
                                     <i class="fa fa-user-circle-o"></i>
                                     <span>Médecin référent</span>
                                 </td>
-                                <td>Docteur Nom Prénom</td>
+                                <td><?php echo "Docteur ".$med->getElementById($data['id_medecin'])['nom']." ".$med->getElementById($data['id_medecin'])['prenom']; ?></td>
                             </tr>
                             </tbody>
                         </table>

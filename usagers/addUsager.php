@@ -20,7 +20,7 @@ if(isset($_POST['addUsa'])) {
         && !empty($_POST['placeborn'])
         && !empty($_POST['numsecu'])
         && !empty($_POST['medref'])) {
-        $usa = new Usager(null, $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu'], $_POST['medref']);
+        $usa = new Usager(null, $_POST['medref'], $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
         $rusa = new UsagerDAO($usa);
         if($rusa->exists()) {
             $exists = 1;

@@ -144,7 +144,7 @@ if(isset($_POST['search'])) {
                                     <i class="fa fa-calendar-plus-o"></i>
                                     <span>Date et lieu de naissance</span>
                                 </td>
-                                <td><?php echo $data['date_naissance']." - ".$data['lieu_naissance']; ?></td>
+                                <td><?php echo date("d/m/Y", strtotime($data['date_naissance']))." - ".$data['lieu_naissance']; ?></td>
                             </tr>
                             <tr>
                                 <td class="icon-row-card bull_over">

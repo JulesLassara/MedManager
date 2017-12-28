@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c30fc7ba-e23d-49b0-96bf-adf77cf97def" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/medecins/addMedecin.php" afterPath="$PROJECT_DIR$/medecins/addMedecin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/medecins/modifMedecin.php" afterPath="$PROJECT_DIR$/medecins/modifMedecin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usagers/addUsager.php" afterPath="$PROJECT_DIR$/usagers/addUsager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usagers/modifUsager.php" afterPath="$PROJECT_DIR$/usagers/modifUsager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usagers/index.php" afterPath="$PROJECT_DIR$/usagers/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,20 +37,20 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/usagers/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="520">
+              <caret line="148" column="32" lean-forward="true" selection-start-line="148" selection-start-column="32" selection-end-line="148" selection-end-column="32" />
               <folding>
-                <marker date="1514371594135" expanded="true" signature="5958:6001" ph="..." />
-                <marker date="1514371594135" expanded="true" signature="6350:6393" ph="..." />
+                <marker date="1514459554885" expanded="true" signature="5984:6027" ph="..." />
+                <marker date="1514459554885" expanded="true" signature="6376:6419" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifUsager.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modifUsager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/usagers/modifUsager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
+            <state relative-caret-position="-2380">
               <caret line="28" column="31" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
               <folding>
                 <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -70,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifMedecin.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modifMedecin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/medecins/modifMedecin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
+            <state relative-caret-position="520">
               <caret line="89" column="87" lean-forward="false" selection-start-line="89" selection-start-column="87" selection-end-line="89" selection-end-column="87" />
               <folding />
             </state>
@@ -189,11 +185,11 @@
         <option value="$PROJECT_DIR$/ressources/dao/UsagerDAO.php" />
         <option value="$PROJECT_DIR$/ressources/dao/GenericDAO.php" />
         <option value="$PROJECT_DIR$/ressources/Usager.php" />
-        <option value="$PROJECT_DIR$/usagers/index.php" />
         <option value="$PROJECT_DIR$/usagers/modifUsager.php" />
         <option value="$PROJECT_DIR$/usagers/addUsager.php" />
         <option value="$PROJECT_DIR$/medecins/addMedecin.php" />
         <option value="$PROJECT_DIR$/medecins/modifMedecin.php" />
+        <option value="$PROJECT_DIR$/usagers/index.php" />
       </list>
     </option>
   </component>
@@ -328,12 +324,12 @@
       <workItem from="1514309824889" duration="3534000" />
       <workItem from="1514366990924" duration="4802000" />
       <workItem from="1514395207171" duration="1760000" />
-      <workItem from="1514454453158" duration="4582000" />
+      <workItem from="1514454453158" duration="5127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76824000" />
+    <option name="totallyTimeSpent" value="77369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="10" width="1904" height="1062" extended-state="0" />
@@ -543,17 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usagers/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-          <folding>
-            <marker date="1514371594135" expanded="true" signature="5958:6001" ph="..." />
-            <marker date="1514371594135" expanded="true" signature="6350:6393" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ressources/DBTable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -610,9 +595,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/medecins/modifMedecin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="89" column="87" lean-forward="false" selection-start-line="89" selection-start-column="87" selection-end-line="89" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usagers/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="148" column="32" lean-forward="true" selection-start-line="148" selection-start-column="32" selection-end-line="148" selection-end-column="32" />
+          <folding>
+            <marker date="1514459554885" expanded="true" signature="5984:6027" ph="..." />
+            <marker date="1514459554885" expanded="true" signature="6376:6419" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/usagers/modifUsager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
+        <state relative-caret-position="-2380">
           <caret line="28" column="31" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
           <folding>
             <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -624,14 +628,6 @@
             <marker date="1514457164685" expanded="true" signature="2478:2569" ph="..." />
             <marker date="1514457164685" expanded="true" signature="8706:8829" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/medecins/modifMedecin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="89" column="87" lean-forward="false" selection-start-line="89" selection-start-column="87" selection-end-line="89" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>

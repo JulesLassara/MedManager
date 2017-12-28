@@ -30,33 +30,19 @@ if(isset($_POST['addUsa'])) {
         }
         unset($_POST);
     } else {
-        if (empty($_POST['civilite'])) {
-            $civilitemissing = 1;
-        }
+        if (empty($_POST['civilite'])) $civilitemissing = 1;
 
-        if (empty($_POST['name'])) {
-            $namemissing = 1;
-        }
+        if (empty($_POST['name'])) $namemissing = 1;
 
-        if (empty($_POST['surname'])) {
-            $surnamemissing = 1;
-        }
+        if (empty($_POST['surname'])) $surnamemissing = 1;
 
-        if (empty($_POST['address'])) {
-            $addressmissing = 1;
-        }
+        if (empty($_POST['address'])) $addressmissing = 1;
 
-        if (empty($_POST['dateborn'])) {
-            $datebornmissing = 1;
-        }
+        if (empty($_POST['dateborn'])) $datebornmissing = 1;
 
-        if (empty($_POST['placeborn'])) {
-            $placebornmissing = 1;
-        }
+        if (empty($_POST['placeborn'])) $placebornmissing = 1;
 
-        if (empty($_POST['numsecu'])) {
-            $numsecumissing = 1;
-        }
+        if (empty($_POST['numsecu'])) $numsecumissing = 1;
     }
 }
 ?>

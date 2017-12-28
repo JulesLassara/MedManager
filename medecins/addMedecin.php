@@ -21,17 +21,11 @@ if(isset($_POST['addDoc'])) {
         }
         unset($_POST);
     } else {
-        if(empty($_POST['civilite'])) {
-            $civilitemissing = 1;
-        }
+        if(empty($_POST['civilite'])) $civilitemissing = 1;
 
-        if(empty($_POST['name'])) {
-            $namemissing = 1;
-        }
+        if(empty($_POST['name'])) $namemissing = 1;
 
-        if(empty($_POST['surname'])) {
-            $surnamemissing = 1;
-        }
+        if(empty($_POST['surname'])) $surnamemissing = 1;
     }
 }
 

@@ -8,15 +8,31 @@ require('../ressources/dao/MedecinDAO.php');
 $med = new MedecinDAO(new Medecin(null, null, null, null));
 
 if(isset($_POST['modifDoc'])) {
-    $med->setElement(new Medecin($_SESSION['id'], $_POST['civilite'], $_POST['nom'], $_POST['prenom']));
-    if($med->update()) {
-        $_SESSION['updated'] = 1;
+
+    if(!empty($_POST['civilite'])
+        && !empty($_POST['name'])
+        && !empty($_POST['surname'])) {
+
+        $med->setElement(new Medecin($_SESSION['id'], $_POST['civilite'], $_POST['name'], $_POST['surname']));
+        if($med->update()) {
+            $_SESSION['updated'] = 1;
+        } else {
+            $_SESSION['updated'] = 0;
+        }
+        unset($_SESSION['id']);
+        header('Location: .');
+
     } else {
-        $_SESSION['updated'] = 0;
+        if(empty($_POST['civilite'])) $civilitemissing = 1;
+
+        if(empty($_POST['name'])) $namemissing = 1;
+
+        if(empty($_POST['surname'])) $surnamemissing = 1;
     }
-    unset($_SESSION['id']);
-    header('Location: .');
-} else if(isset($_GET['id'])) {
+
+}
+
+if(isset($_GET['id'])) {
     $_SESSION['id'] = $_GET['id'];
     $valuesmed = $med->getElementById($_GET['id']);
     if($valuesmed == null) {
@@ -68,6 +84,7 @@ if(isset($_POST['modifDoc'])) {
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls">
                                 <label>Civilité</label>
+                                <?php if(isset($civilitemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                                 <select name="civilite" class="form-control">
                                     <option <?php if($med->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
                                     <option <?php if($med->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
@@ -77,14 +94,16 @@ if(isset($_POST['modifDoc'])) {
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls">
-                                <label for="nom">Nom</label>
-                                <input name="nom" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['nom']?>">
+                                <label>Nom</label>
+                                <?php if(isset($namemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                <input name="name" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['nom']?>">
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls">
-                                <label for="prenom">Prénom</label>
-                                <input name="prenom" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['prenom']?>">
+                                <label>Prénom</label>
+                                <?php if(isset($surnamemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                <input name="surname" type="text" class="form-control" value="<?php echo $med->getElement()->toArray()['prenom']?>">
                             </div>
                         </div>
                         <br>

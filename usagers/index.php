@@ -106,9 +106,9 @@ if(isset($_POST['search'])) {
                 <div class="form-group floating-label-form-group control searchEntity">
                     <input type="text" class="form-control" placeholder="Exemple : John" name="keyword">
                 </div>
-                <button type="submit" class="btn btn-primary" name="search">Rechercher</button>
+                <button type="submit" class="btn btn-primary" name="search">Filtrer</button>
                 <div class="addEntity">
-                    <a href="addUsager.php" class="btn btn-info" role="button" aria-pressed="true">Ajouter un usager</a>
+                    <a href="addUsager.php" class="btn btn-info" role="button" aria-pressed="true"><i class="fa fa-plus"></i> Nouvel usager</a>
                 </div>
             </form>
             <hr>

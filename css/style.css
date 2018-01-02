@@ -138,6 +138,7 @@ body {
 
 header.masthead {
   margin-bottom: 50px;
+  height: 220px; /* Height of the header */
   background: no-repeat center center;
   background-color: #868e96;
   background-attachment: scroll;
@@ -163,7 +164,7 @@ header.masthead {
       header.masthead .page-heading,
       header.masthead .post-heading,
       header.masthead .site-heading {
-        padding: 200px 0; } }
+        padding: 55px 0; } }
   header.masthead .page-heading,
   header.masthead .site-heading {
     text-align: center; }
@@ -366,3 +367,82 @@ footer {
     line-height: 20px;
 }
 /* END ANIMATION HOVER LINK */
+
+/* CALENDAR */
+
+.calendartitle {
+  text-align: center;
+}
+
+.calendartitle a:hover {
+  text-decoration: none;
+}
+
+.headday {
+  height: 30px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.day {
+  height: 100px;
+}
+
+.today {
+  background: #28a745;
+}
+
+.headday:nth-of-type(7), .day:nth-of-type(7) {
+  color: blue;
+}
+
+.headday:nth-of-type(1), .day:nth-of-type(1) {
+  color: red;
+}
+
+/* END CALENDAR */
+
+/* NEW CONSULTATION */
+
+#newConsultation {
+  display: none;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+#newConsultation:target {
+  display: block;
+}
+
+.popup_win {
+  box-sizing: border-box;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid black;
+  position: relative;
+  width: 600px;
+  height: 310px;
+  margin: 10% auto;
+  box-shadow: 0px 0px 10px #000;
+  border-radius: 3px;
+}
+
+.popup_win form {
+  margin-top: 20px;
+}
+
+.close {
+  color: red;
+}
+
+.close:hover {
+  color: red;
+}
+
+.close-btn {
+  float: right;
+  color: red;
+  margin: -5px -5px 0 0;
+}

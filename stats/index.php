@@ -3,6 +3,7 @@ require('../ressources/login/logincheck.php');
 if(!isConnected()) {
   header('Location: ..');
 }
+
 ?>
 
 <!DOCTYPE HTML>
@@ -12,7 +13,7 @@ if(!isConnected()) {
 
   <body>
 
-    <?php include('../ressources/inc/nav.html'); ?>
+  <?php include('../ressources/inc/nav.html'); ?>
 
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('img/home-bg.jpg')">
@@ -33,7 +34,7 @@ if(!isConnected()) {
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>soon</p>
+            <?php $pc->draw(); ?>
         </div>
       </div>
     </div>

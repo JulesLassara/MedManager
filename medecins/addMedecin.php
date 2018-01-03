@@ -21,7 +21,8 @@ if(isset($_POST['addDoc'])) {
         }
         unset($_POST);
     } else {
-        if(empty($_POST['civilite'])) $civilitemissing = 1;
+        if (!isset($_POST['civilite'])) $civilitemissing = 1;
+        else if($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
 
         if(empty($_POST['name'])) $namemissing = 1;
 
@@ -74,10 +75,10 @@ if(isset($_POST['addDoc'])) {
 
                     <form method="POST">
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Civilité</label>
+                            <div class="form-group controls">
                                 <?php if(isset($civilitemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                                 <select name="civilite" class="form-control">
+                                    <option value="" disabled selected>Civilité</option>
                                     <option value="Homme">Homme</option>
                                     <option value="Femme">Femme</option>
                                     <option value="Autre">Autre</option>

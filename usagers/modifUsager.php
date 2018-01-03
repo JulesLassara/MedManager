@@ -30,7 +30,7 @@ if(isset($_POST['modifUsa'])) {
         header('Location: .');
 
     } else {
-        if (empty($_POST['civilite'])) $civilitemissing = 1;
+        if ($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
 
         if (empty($_POST['name'])) $namemissing = 1;
 
@@ -104,10 +104,10 @@ if(isset($_GET['id'])) {
 
                 <!-- Civilite -->
                 <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Civilité</label>
+                    <div class="form-group controls">
                         <?php if(isset($civilitemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                         <select name="civilite" class="form-control">
+                            <option value="" disabled>Civilité</option>
                             <option <?php if($usa->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
                             <option <?php if($usa->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
                             <option <?php if($usa->getElement()->toArray()['civilite'] == "Autre") echo "selected=\"selected\""; ?> value="Autre">Autre</option>
@@ -171,12 +171,12 @@ if(isset($_GET['id'])) {
 
                 <!-- Médecin référent -->
                 <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Médecin référent</label>
+                    <div class="form-group controls">
                         <select name="medref" class="form-control">
-                            <option selected="selected" value="null">Aucun</option>
+                            <option value="" disabled>Médecin référent</option>
+                            <option selected value="null">Aucun</option>
                             <?php while($data = $rlistmed->fetch()) { ?>
-                                <option value="<?php echo $data['id_medecin']; ?>" <?php if($usa->getElement()->toArray()['id_medecin'] == $data['id_medecin']) echo "selected=\"selected\""; ?>><?php echo "Docteur ".$data['nom']; ?></option>
+                                <option value="<?php echo $data['id_medecin']; ?>" <?php if($usa->getElement()->toArray()['id_medecin'] == $data['id_medecin']) echo "selected"; ?>><?php echo "Docteur ".$data['nom']; ?></option>
                             <?php } ?>
                         </select>
                     </div>

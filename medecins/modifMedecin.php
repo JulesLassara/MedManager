@@ -23,7 +23,7 @@ if(isset($_POST['modifDoc'])) {
         header('Location: .');
 
     } else {
-        if(empty($_POST['civilite'])) $civilitemissing = 1;
+        if ($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
 
         if(empty($_POST['name'])) $namemissing = 1;
 
@@ -82,13 +82,13 @@ if(isset($_GET['id'])) {
 
                     <form method="POST">
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Civilité</label>
+                            <div class="form-group controls">
                                 <?php if(isset($civilitemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                                 <select name="civilite" class="form-control">
-                                    <option <?php if($med->getElement()->toArray()['civilite'] == "Homme") echo "selected=\"selected\""; ?> value="Homme">Homme</option>
-                                    <option <?php if($med->getElement()->toArray()['civilite'] == "Femme") echo "selected=\"selected\""; ?> value="Femme">Femme</option>
-                                    <option <?php if($med->getElement()->toArray()['civilite'] == "Autre") echo "selected=\"selected\""; ?> value="Autre">Autre</option>
+                                    <option value="" disabled>Civilité</option>
+                                    <option <?php if($med->getElement()->toArray()['civilite'] == "Homme") echo "selected"; ?> value="Homme">Homme</option>
+                                    <option <?php if($med->getElement()->toArray()['civilite'] == "Femme") echo "selected"; ?> value="Femme">Femme</option>
+                                    <option <?php if($med->getElement()->toArray()['civilite'] == "Autre") echo "selected"; ?> value="Autre">Autre</option>
                                 </select>
                             </div>
                         </div>

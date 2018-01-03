@@ -1,81 +1,48 @@
 <?php
+
 require('../ressources/login/logincheck.php');
 if(!isConnected()) {
-  header('Location: ..');
+    header('Location: ..');
 }
 
-// Set your timezone!!
-date_default_timezone_set('Europe/Paris');
+require('../ressources/Usager.php');
+require('../ressources/dao/UsagerDAO.php');
 
-// Get prev & next month
-if (isset($_GET['ma'])) {
-    $ma = $_GET['ma'];
-} else {
-    // This month
-    $ma = date('Y-m');
+require('../ressources/Medecin.php');
+require('../ressources/dao/MedecinDAO.php');
+
+// Calendar
+require('../ressources/Calendar.php');
+
+if(!isset($_SESSION['usagers'])) {
+    $listusa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
+    $_SESSION['usagers'] = $listusa->getElementsByKeyword("");
 }
 
-// Check format
-$timestamp = strtotime($ma . '-01');
-if ($timestamp === false) {
-    $timestamp = time();
-}
-
-// Today
-$today = date('Y-m-j', time());
-
-// For H3 title
-$html_title = date('F Y', $timestamp);
-$html_title = str_replace(
-    array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-    array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'),
-    $html_title
-);
-
-// Create prev & next month link     mktime(hour,minute,second,month,day,year)
-$prev = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)-1, 1, date('Y', $timestamp)));
-$next = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)+1, 1, date('Y', $timestamp)));
-
-// Number of days in the month
-$day_count = date('t', $timestamp);
-
-// 0:Sun 1:Mon 2:Tue ...
-$str = date('w', mktime(0, 0, 0, date('m', $timestamp), 1, date('Y', $timestamp)));
-
-
-// Create Calendar!!
-$weeks = array();
-$week = '';
-
-// Add empty cell
-$week .= str_repeat('<td class="day"></td>', $str);
-
-for ( $day = 1; $day <= $day_count; $day++, $str++) {
-
-    $date = $ma.'-'.$day;
-
-    if ($today == $date) {
-        $week .= '<td class="day today">'.$day;
-    } else {
-        $week .= '<td class="day">'.$day;
+//Récupération de l'usager du RDV
+if(isset($_POST['step1'])) {
+    if(!isset($_POST['usager'])) $usagermissing = 1;
+    else {
+        //TODO MODIFIER LA CREATION DE L'USAGER C'EST ULTRA MOCHE
+        $tmpusa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
+        $list = $tmpusa->getElementById($_POST['usager']);
+        $_SESSION['usagerRDV'] = new Usager($_POST['usager'], $list['id_medecin'], $list['civilite'], $list['nom'], $list['prenom'], $list['adresse'], $list['date_naissance'], $list['lieu_naissance'], $list['num_secu']);
+        $listmed = new MedecinDAO(new Medecin(null, null, null, null));
+        $_SESSION['medecins'] = $listmed->getElementsByKeyword("");
     }
-    $week .= '</td>';
+}
 
-    // End of the week OR End of the month
-    if ($str % 7 == 6 || $day == $day_count) {
-
-        if($day == $day_count) {
-            // Add empty cell
-            $week .= str_repeat('<td class="day"></td>', 6 - ($str % 7));
-        }
-
-        $weeks[] = '<tr>'.$week.'</tr>';
-
-        // Prepare for new week
-        $week = '';
-
+//Récupération du médecin du RDV
+if(isset($_POST['step2'])) {
+    if(!isset($_POST['medecin'])) $medecinmissing = 1;
+    else if(!isset($_POST['dureerdv'])) $dureemissing = 1;
+    else {
+        //TODO MODIFIER LA CREATION DE L'USAGER C'EST ULTRA MOCHE
+        $tmpmed = new MedecinDAO(new Medecin(null, null, null, null));
+        $list = $tmpmed->getElementById($_POST['medecin']);
+        $_SESSION['medecinRDV'] = new Medecin($_POST['medecin'], $list['civilite'], $list['nom'], $list['prenom']);
+        //TODO search consults
     }
-
 }
 
 ?>
@@ -145,42 +112,96 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
             <!-- NOUVELLE CONSULTATION -->
             <div id="newConsultation">
                 <div class="popup_win">
-                    <a class="close" href="#"><i class="fa fa-times-circle close-btn"></i></a>
+                    <a class="close" href=""><i class="fa fa-times-circle close-btn"></i></a>
+
+                    <?php if(isset($_POST['step1']) && !isset($usagermissing)): ?>
+
+                    <!-- STEP 2 -->
+                    <h2>Nouvelle consultation - 2/3</h2>
 
                     <form method="POST">
                         <div class="control-group">
                             <div class="form-group controls">
-                                <?php if(isset($civilitemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
-                                <select name="civilite" class="form-control">
-                                    <option value="" disabled selected>Select your option</option>
-                                    <option value="Homme">Homme</option>
-                                    <option value="Femme">Femme</option>
-                                    <option value="Autre">Autre</option>
+                                <?php if(isset($medecinmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                <select name="medecin" class="form-control">
+                                    <option value="" disabled selected>Médecin</option>
+                                    <?php while($data = $_SESSION['medecins']->fetch()) { ?>
+                                        <option value="<?php echo $data['id_medecin']; ?>" <?php if($_SESSION['usagerRDV']->toArray()['id_medecin'] == $data['id_medecin']) echo "selected"; ?>><?php echo "Docteur ".$data['nom']; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Nom</label>
-                                <?php if(isset($namemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
-                                <input name="name" type="text" class="form-control" placeholder="Nom">
+                            <div class="form-group controls">
+                                <?php if(isset($dureemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                <select name="duree_rdv" class="form-control">
+                                    <option value="" disabled>Durée de la consultation</option>
+                                    <option value="30" selected>00:30:00</option>
+                                    <option value="60">01:00:00</option>
+                                    <option value="90">01:30:00</option>
+                                    <option value="120">02:00:00</option>
+                                    <option value="150">02:30:00</option>
+                                </select>
                             </div>
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" name="backstep1">Choix de l'usager</button>
+                            <button type="submit" class="btn btn-primary" name="step2">Choix de la date</button>
+                        </div>
+                    </form>
+
+                    <?php elseif(isset($_POST['step2']) && !isset($medecinmissing)): ?>
+
+                    <!-- STEP 3 -->
+                    <h2>Nouvelle consultation - 3/3</h2>
+
+                    <form method="POST">
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Prénom</label>
-                                <?php if(isset($surnamemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
-                                <input name="surname" type="text" class="form-control" placeholder="Prénom">
+                            <div class="form-group controls">
+                                <?php if(isset($medecinmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                <select name="civilite" class="form-control">
+                                    <option value="" disabled selected>Médecin</option>
+                                    <?php while($data = $_SESSION['medecins']->fetch()) { ?>
+                                        <option value="<?php echo $data['id_medecin']; ?>" <?php if($_SESSION['usagerRDV']->getElement()->toArray()['id_medecin'] == $data['id_medecin']) echo "selected"; ?>><?php echo "Docteur ".$data['nom']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <br>
                         <div class="form-group submit-right">
-                            <button type="submit" class="btn btn-primary" name="addDoc">Ajouter</button>
+                            <button type="submit" class="btn btn-primary" name="step3">Enregistrer la consultation</button>
                         </div>
                     </form>
 
+                    <?php else: ?>
+
+                        <!-- STEP 1 -->
+                        <h2>Nouvelle consultation - 1/3</h2>
+
+                        <form method="POST">
+                            <div class="control-group">
+                                <div class="form-group controls">
+                                    <?php if(isset($usagermissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                    <select name="usager" class="form-control">
+                                        <option value="" disabled selected>Usager concerné</option>
+                                        <?php while($data = $_SESSION['usagers']->fetch()) { ?>
+                                            <option value="<?php echo $data['id_usager']; ?>"><?php echo $data['nom']." ".$data['prenom']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group submit-right">
+                                <button type="submit" class="btn btn-primary" name="step1">Choix du médecin</button>
+                            </div>
+                        </form>
+
+                    <?php endif; ?>
+
                 </div>
             </div>
+            <!-- END NOUVELLE CONSULTATION -->
 
         </div>
       </div>

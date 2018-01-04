@@ -20,6 +20,7 @@ if(!isset($_SESSION['usagers'])) {
 }
 
 //Récupération de l'usager du RDV
+//Etape 1
 if(isset($_POST['step1'])) {
     if(!isset($_POST['usager'])) $usagermissing = 1;
     else {
@@ -28,21 +29,46 @@ if(isset($_POST['step1'])) {
         $list = $tmpusa->getElementById($_POST['usager']);
         $_SESSION['usagerRDV'] = new Usager($_POST['usager'], $list['id_medecin'], $list['civilite'], $list['nom'], $list['prenom'], $list['adresse'], $list['date_naissance'], $list['lieu_naissance'], $list['num_secu']);
         $listmed = new MedecinDAO(new Medecin(null, null, null, null));
-        $_SESSION['medecins'] = $listmed->getElementsByKeyword("");
+        $_SESSION['medecins'] = $listmed->getElementsByKeyword(""); //TODO debug le fait que ça ne se save pas dans la session
+        //Passage à l'étape 2
+        $_SESSION['step2'] = 1;
     }
 }
 
 //Récupération du médecin du RDV
-if(isset($_POST['step2'])) {
+//Etape 2
+else if(isset($_POST['step2'])) {
     if(!isset($_POST['medecin'])) $medecinmissing = 1;
-    else if(!isset($_POST['dureerdv'])) $dureemissing = 1;
+    else if(!isset($_POST['duree_rdv'])) $dureemissing = 1;
     else {
-        //TODO MODIFIER LA CREATION DE L'USAGER C'EST ULTRA MOCHE
+        //TODO MODIFIER LA CREATION DU MEDECIN C'EST ULTRA MOCHE
         $tmpmed = new MedecinDAO(new Medecin(null, null, null, null));
         $list = $tmpmed->getElementById($_POST['medecin']);
         $_SESSION['medecinRDV'] = new Medecin($_POST['medecin'], $list['civilite'], $list['nom'], $list['prenom']);
         //TODO search consults
+
+        //Passage à l'étape 3
+        unset($_SESSION['step2']);
+        $_SESSION['step3'] = 1;
     }
+}
+
+//Récupération du créneau du RDV
+//Etape 3
+else if(isset($_POST['step3'])) {
+    if(!isset($_POST['horaire'])) $horairemissing = 1;
+    else {
+        //TODO insert
+        unset($_SESSION['step3']);
+        $_SESSION['consult'] = 1; //OU 0 si fail
+    }
+}
+
+if(isset($_POST['backstep1'])) {
+    unset($_SESSION['step2']);
+} else if(isset($_POST['backstep2'])) {
+    $_SESSION['step2'] = 1;
+    unset($_SESSION['step3']);
 }
 
 ?>
@@ -114,7 +140,7 @@ if(isset($_POST['step2'])) {
                 <div class="popup_win">
                     <a class="close" href=""><i class="fa fa-times-circle close-btn"></i></a>
 
-                    <?php if(isset($_POST['step1']) && !isset($usagermissing)): ?>
+                    <?php if(isset($_SESSION['step2'])): ?>
 
                     <!-- STEP 2 -->
                     <h2>Nouvelle consultation - 2/3</h2>
@@ -124,7 +150,7 @@ if(isset($_POST['step2'])) {
                             <div class="form-group controls">
                                 <?php if(isset($medecinmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                                 <select name="medecin" class="form-control">
-                                    <option value="" disabled selected>Médecin</option>
+                                    <option value="" disabled selected>Médecins</option>
                                     <?php while($data = $_SESSION['medecins']->fetch()) { ?>
                                         <option value="<?php echo $data['id_medecin']; ?>" <?php if($_SESSION['usagerRDV']->toArray()['id_medecin'] == $data['id_medecin']) echo "selected"; ?>><?php echo "Docteur ".$data['nom']; ?></option>
                                     <?php } ?>
@@ -151,7 +177,7 @@ if(isset($_POST['step2'])) {
                         </div>
                     </form>
 
-                    <?php elseif(isset($_POST['step2']) && !isset($medecinmissing)): ?>
+                    <?php elseif(isset($_SESSION['step3'])): ?>
 
                     <!-- STEP 3 -->
                     <h2>Nouvelle consultation - 3/3</h2>
@@ -159,17 +185,16 @@ if(isset($_POST['step2'])) {
                     <form method="POST">
                         <div class="control-group">
                             <div class="form-group controls">
-                                <?php if(isset($medecinmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
-                                <select name="civilite" class="form-control">
-                                    <option value="" disabled selected>Médecin</option>
-                                    <?php while($data = $_SESSION['medecins']->fetch()) { ?>
-                                        <option value="<?php echo $data['id_medecin']; ?>" <?php if($_SESSION['usagerRDV']->getElement()->toArray()['id_medecin'] == $data['id_medecin']) echo "selected"; ?>><?php echo "Docteur ".$data['nom']; ?></option>
-                                    <?php } ?>
+                                <?php if(isset($horairemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
+                                <select name="horaire" class="form-control">
+                                    <option value="" disabled selected>Créneaux disponibles</option>
+
                                 </select>
                             </div>
                         </div>
                         <br>
-                        <div class="form-group submit-right">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" name="backstep2">Choix de la date</button>
                             <button type="submit" class="btn btn-primary" name="step3">Enregistrer la consultation</button>
                         </div>
                     </form>

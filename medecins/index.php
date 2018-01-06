@@ -70,7 +70,7 @@ if(isset($_POST['search'])) {
                         <?php break;
                     case 2: ?>
                         <div class="alert alert-danger" role="alert">
-                            <i class="fa fa-exclamation-circle"></i> Erreur : Échec de la suppression.
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Un ou plusieurs usager(s) est/sont référencé(s) à ce médecin.
                         </div>
                         <?php break;
                     case 3: ?>

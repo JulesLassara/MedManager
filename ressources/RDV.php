@@ -1,31 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jules
- * Date: 30/11/17
- * Time: 10:10
- */
 
 class RDV implements DBTable {
 
     private $dateheure;
-    private $duree;
     private $usager;
     private $medecin;
+    private $duree;
 
     /**
      * RDV constructor.
      * @param $dateheure
-     * @param $duree
      * @param $usager
      * @param $medecin
+     * @param $duree
      */
-    public function __construct($dateheure, $duree, $usager, $medecin)
+    public function __construct($dateheure, $usager, $medecin, $duree)
     {
         $this->dateheure = $dateheure;
-        $this->duree = $duree;
         $this->usager = $usager;
         $this->medecin = $medecin;
+        $this->duree = $duree;
     }
 
     /**
@@ -63,10 +57,10 @@ class RDV implements DBTable {
 
     public function toArray() {
         return array(
-            "dateheure"  => $this->getDateheure(),
-            "duree"       => $this->getDuree(),
-            "usager"    => $this->getUsager(),
-            "medecin"    => $this->getMedecin()
+            "date_heure_rdv" => $this->getDateheure(),
+            "id_usager"    => $this->getUsager(),
+            "id_medecin"   => $this->getMedecin(),
+            "duree_rdv"     => $this->getDuree()
         );
     }
 }

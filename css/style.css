@@ -392,10 +392,6 @@ footer {
   background: #28a745;
 }
 
-.headday:nth-of-type(7), .day:nth-of-type(7) {
-  color: blue;
-}
-
 .headday:nth-of-type(1), .day:nth-of-type(1) {
   color: red;
 }

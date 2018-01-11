@@ -1,7 +1,6 @@
 <?php
 
-// TODO MODIFIER LE CHEMIN D'ACCES
-require_once('/opt/lampp/htdocs/GestionnaireCabinetMedical/ressources/Database.php');
+require_once(__DIR__.'/../Database.php');
 
 abstract class GenericDAO {
 
@@ -37,6 +36,10 @@ abstract class GenericDAO {
 
     public function getElement() {
         return $this->element;
+    }
+
+    public function getConnection() {
+        return $this->connection;
     }
 
     public function setElement($element) {
@@ -124,7 +127,7 @@ abstract class GenericDAO {
     }
 
     /**
-     * Recuprere l'element correspondant a l'id passe en parametre
+     * Recupere l'element correspondant a l'id passe en parametre
      * @param $id l'id correspondant
      * @return array avec les infos de l'element correspondant
      */

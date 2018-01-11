@@ -398,6 +398,10 @@ footer {
 
 /* END CALENDAR */
 
+.medfilter {
+  height: 54px!important;
+}
+
 /* NEW CONSULTATION */
 
 #newConsultation {

@@ -47,8 +47,68 @@ if($_GET['duree_rdv'] != 30
 
 //Ajout de la consultation
 if(isset($_POST['step3'])) {
-    $rdv = new RDVDAO(new RDV("2018-01-20 10:00:00", $_GET['id_usager'], $_GET['id_medecin'], $_GET['duree_rdv'])); //TODO modif datetime lol
-    echo $rdv->insert();
+    $datetmp = DateTime::createFromFormat('d/m/Y H:i:s', $_POST['horaire']);
+    $rdv = new RDVDAO(new RDV($datetmp, $_GET['id_usager'], $_GET['id_medecin'], $_GET['duree_rdv']));
+    $_SESSION['consult_added'] = $rdv->insert();
+    header('Location: .');
+}
+
+// Jour courant
+$today = new DateTime(date('Y-m-d H:i:s', time()));
+
+// Création du premier créneau
+if($today->format("i") < 30) {
+    $today->setTime($today->format("H"), 30, 0);
+} else {
+    $today->setTime($today->format("H"), 0, 0);
+    $today->modify('+1 hour');
+}
+
+// Création du rdv courant
+$currentrdv = new RDV($today, null, null, 30);
+
+// Liste des créneaux déjà occupés
+$listrdv = new RDVDAO($currentrdv);
+
+// Créneaux dispos (20 premiers)
+$rdvs = array();
+$a= 1;
+// Tant qu'il n'y a pas 20 créneaux disponibles
+while (sizeof($rdvs) < 20) {
+
+    // TODO: trouver un système pour faire qu'une seule et unique requête
+    $allrdv = $listrdv->getElementsByKeywordInColumn($_GET['id_medecin']);
+
+    // Si l'heure de fin du rdv ne dépasse pas 17h30 et que ce n'est pas dimanche
+    // TODO: jours feriés
+    if($currentrdv->getDateheureFin()->format("H") <= 17
+        && $currentrdv->getDateheure()->format("w") != 0) {
+        $overlap = false;
+
+        // Parcours de tous les rendez-vous
+        while($data = $allrdv->fetch()) {
+            $rdvcheckend = new DateTime($data['date_heure_rdv']);
+            $rdvcheckend->modify('+'.$data['duree_rdv'].' minutes');
+
+            // Si le rendez-vous courant en chevauche un autre
+            if($currentrdv->getDateheure() >= new DateTime($data['date_heure_rdv'])
+                && $currentrdv->getDateheureFin() <= $rdvcheckend) {
+                $overlap = true;
+                break;
+            }
+        }
+
+        // Si le rendez-vous courant n'en chevauche pas un autre
+        if(!$overlap) {
+            $rdvs[sizeof($rdvs)] = $currentrdv->getDateheure()->format("d/m/Y H:i:s");
+        }
+        // Horaire suivant
+        $currentrdv->nextSlot();
+    } else {
+        // Jour suivant
+        $currentrdv->nextDay();
+    }
+
 }
 
 ?>
@@ -93,7 +153,9 @@ if(isset($_POST['step3'])) {
                         <?php if(isset($horairemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                         <select name="horaire" class="form-control">
                             <option value="" disabled selected>Créneaux disponibles</option>
-
+                            <?php foreach($rdvs as $rdv) { ?>
+                                <option value="<?php echo $rdv; ?>"><?php echo $rdv; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>

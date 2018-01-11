@@ -5,6 +5,13 @@ if(!isConnected()) {
     header('Location: ..');
 }
 
+require('../ressources/Medecin.php');
+require('../ressources/dao/MedecinDAO.php');
+
+// Liste des médecins du centre
+$listmed = new MedecinDAO(new Medecin(null, null, null, null));
+$listmed = $listmed->getElementsByKeyword("");
+
 // Calendar
 require('../ressources/Calendar.php');
 
@@ -41,9 +48,33 @@ require('../ressources/Calendar.php');
 
             <!-- Ajouter une consultation -->
 
+            <?php
+            if(isset($_SESSION['consult_added'])) {
+                switch ($_SESSION['consult_added']) {
+                    case 0: ?>
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Ajout impossible.
+                        </div>
+                        <?php break;
+                    case 1: ?>
+                        <div class="alert alert-success" role="alert">
+                            <i class="fa fa-check-circle"></i> Succès : Consultation ajoutée.
+                        </div>
+                        <?php break;
+                }
+                unset($_SESSION['consult_added']);
+            }
+            ?>
+
             <form method="POST" class="form-inline">
-                <div class="form-group floating-label-form-group control searchEntity">
-                    <input type="text" class="form-control" placeholder="Exemple : John" name="keyword">
+                <div class="form-group control searchEntity">
+                    <select name="medfilter" class="form-control medfilter">
+                        <option value="" disabled selected>Médecin</option>
+                        <?php
+                        while($data = $listmed->fetch()) { ?>
+                            <option value="<?php echo $data['id_medecin'] ?>"><?php echo "Docteur ".$data['nom']?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary" name="search">Filtrer</button>
                 <div class="addEntity">
@@ -71,6 +102,12 @@ require('../ressources/Calendar.php');
                 }
                 ?>
             </table>
+
+            <p>
+                Les médecins travaillants au sein de ce centre médical ont des horaires fixes. Ils travaillent tous les jours, du <i>lundi</i> au <i>samedi</i>,
+                de <i>08:00</i> à <i>17:30</i>.
+                Si ces horaires sont voués à changer, merci de contacter le webmaster de MedManager.
+            </p>
         </div>
       </div>
     </div>

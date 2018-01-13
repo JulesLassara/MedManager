@@ -7,12 +7,14 @@ require('../ressources/dao/MedecinDAO.php');
 
 $med = new MedecinDAO(new Medecin(null, null, null, null));
 
+// Si le formulaire a été validé
 if(isset($_POST['modifDoc'])) {
-
+    // Si tous les champs ont été remplis
     if(!empty($_POST['civilite'])
         && !empty($_POST['name'])
         && !empty($_POST['surname'])) {
 
+        // Mise à jour du médecin
         $med->setElement(new Medecin($_SESSION['id'], $_POST['civilite'], $_POST['name'], $_POST['surname']));
         if($med->update()) {
             $_SESSION['updated'] = 1;
@@ -23,6 +25,7 @@ if(isset($_POST['modifDoc'])) {
         header('Location: .');
 
     } else {
+        // Champs manquants
         if ($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
 
         if(empty($_POST['name'])) $namemissing = 1;
@@ -32,6 +35,7 @@ if(isset($_POST['modifDoc'])) {
 
 }
 
+// Modification d'un médecin
 if(isset($_GET['id'])) {
     $_SESSION['id'] = $_GET['id'];
     $valuesmed = $med->getElementById($_GET['id']);

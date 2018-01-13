@@ -458,6 +458,15 @@ footer {
   margin-top: 35px;
 }
 
+.popup_win h3 {
+  text-align: center;
+}
+
+.popup_win h4 {
+  font-weight: lighter;
+  text-align: center;
+}
+
 .close {
   color: red;
 }

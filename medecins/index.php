@@ -1,4 +1,5 @@
 <?php
+
 require('../ressources/login/logincheck.php');
 if(!isConnected()) {
   header('Location: ..');
@@ -7,6 +8,7 @@ if(!isConnected()) {
 require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');
 
+// Récupération des médecins en fonction de la recherche
 $med = new MedecinDAO(new Medecin(null, null, null, null));
 
 if(isset($_POST['search'])) {

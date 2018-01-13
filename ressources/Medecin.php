@@ -5,7 +5,7 @@ require_once('Entity.php');
 class Medecin extends Entity {
 
     /**
-     * Medecin constructor with a nullable id.
+     * Constructeur de Medecin (id nullable)
      */
     public function __construct($id, $civilite, $nom, $prenom) {
         parent::__construct($id, $civilite, $nom, $prenom);

@@ -11,8 +11,11 @@ abstract class GenericDAO {
     private $columns;
 
     /**
-     * GenericDAO constructor.
-     * @param $element
+     * Constructeur GenericDAO
+     * @param DBTable $element
+     * @param $tableName : le nom de la table de l'élément
+     * @param $idName : l'id de la table de l'élément
+     * @param $columns : les colonnes de la table de l'élément
      */
     public function __construct(DBTable $element, $tableName, $idName, $columns) {
         $this->connection = Database::getInstance()->getConnection();
@@ -46,6 +49,10 @@ abstract class GenericDAO {
         $this->element = $element;
     }
 
+    /**
+     * Vérifie si l'élément existe
+     * @return true s'il existe, false si non
+     */
     public function exists() { //todo modif pour usager --> check uniquement numéro de sécu
         $selection = "SELECT * FROM ".$this->getTableName()." WHERE ";
         foreach($this->getColumns() as $info) {
@@ -57,6 +64,10 @@ abstract class GenericDAO {
         return $req->fetch();
     }
 
+    /**
+     * Vérifie si l'élément existe depuis son ID
+     * @return true s'il existe, false si non
+     */
     public function existsFromId() {
         $selection = "SELECT * FROM ".$this->getTableName()." WHERE ".$this->getIdName()." LIKE :id";
         $req = $this->connection->prepare($selection);
@@ -66,15 +77,15 @@ abstract class GenericDAO {
 
 
     /**
-     * Insertion de l'objet dans la base de donnees
-     * @return bool = 1 si succes, 0 si echec
+     * Insertion de l'élément dans la base de données
+     * @return true si succès, false si échec
      */
     public function insert() {
-        // Requete d'insertion
+        // Requête d'insertion
         $insertion = "INSERT INTO ".$this->getTableName()." (".$this->toStringColumns(false). ") VALUES (".$this->toStringColumns(true).")";
-        // Preparation de la requete
+        // Préparation de la requête
         $req = $this->connection->prepare($insertion);
-        // Execution de la requete
+        // Exécution de la requête
         $status = $req->execute($this->element->toArray());
 
         return $status;
@@ -82,11 +93,11 @@ abstract class GenericDAO {
 
 
     /**
-     * Met a jour l'element courant
-     * @return bool = 1 si succes, 0 si echec
+     * Met à jour l'element courant
+     * @return true si succès, false si échec
      */
     public function update() {
-        //Preparation maj
+        // Préparation de la mise à jour
         $update = "UPDATE ".$this->getTableName()." SET ";
         foreach($this->getColumns() as $info) {
             $update .= $info." = :".$info.",";
@@ -94,16 +105,16 @@ abstract class GenericDAO {
         $update = substr($update, 0, -1);
         $update .= " WHERE ".$this->getIdName()." = :".$this->getIdName().";";
         $req = $this->connection->prepare($update);
-        //Maj
+        // Mise à jour
         $status = $req->execute($this->getElement()->toArray());
 
         return $status;
     }
 
     /**
-     * Effectue une recherche dans la table de l'element concerne contenant le mot cle passe en parametres
-     * @param $keyword le mot cle, si le champs est vide, renvoie toutes les valeurs de la table
-     * @return PDOStatement le resultat de la recherche
+     * Effectue une recherche dans la table de l'élément concerné contenant le mot clé passé en paramètres
+     * @param $keyword : le mot clé, si le champs est vide, renvoie toutes les valeurs de la table
+     * @return PDOStatement le résultat de la recherche
      */
 
     //TODO améliorer en mettant les valeurs dans le execute
@@ -127,9 +138,9 @@ abstract class GenericDAO {
     }
 
     /**
-     * Recupere l'element correspondant a l'id passe en parametre
+     * Récupère l'élément correspondant à l'id passé en paramètre
      * @param $id l'id correspondant
-     * @return array avec les infos de l'element correspondant
+     * @return array avec les infos de l'élément correspondant
      */
     public function getElementById($id) {
         $res = $this->connection->prepare('SELECT * FROM '.$this->getTableName().' WHERE '.$this->getIdName().' LIKE :id');
@@ -163,7 +174,7 @@ abstract class GenericDAO {
     }
 
     /**
-     * Supprime l'element correspondant à l'ID courant
+     * Supprime l'élément correspondant à l'ID courant
      */
     public function delete() {
         $delete = "DELETE FROM ".$this->getTableName()." WHERE ".$this->getIdName()." LIKE :id";

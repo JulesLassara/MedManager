@@ -7,12 +7,18 @@ if(!isConnected()) {
 require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');
 
+// Si le formulaire a validé
 if(isset($_POST['addDoc'])) {
+    // Si tous les champs ont été remplis
     if(!empty($_POST['civilite'])
     && !empty($_POST['name'])
     && !empty($_POST['surname'])) {
+
+        // Création du médecin
         $med = new Medecin(null, $_POST['civilite'], $_POST['name'], $_POST['surname']);
         $rmed = new MedecinDAO($med);
+
+        // Insertion s'il n'existe pas déjà
         if($rmed->exists()) {
             $exists = 1;
         } else {
@@ -21,6 +27,7 @@ if(isset($_POST['addDoc'])) {
         }
         unset($_POST);
     } else {
+        // Champs manquants
         if (!isset($_POST['civilite'])) $civilitemissing = 1;
         else if($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
 

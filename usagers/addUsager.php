@@ -15,7 +15,9 @@ require_once('../ressources/dao/MedecinDAO.php');
 $listmed = new MedecinDAO(new Medecin(null, null, null, null));
 $rlistmed = $listmed->getElementsByKeyword("");
 
+// Si le formulaire a été validé
 if(isset($_POST['addUsa'])) {
+    // Si tous les champs ont été remplis
     if(!empty($_POST['civilite'])
         && !empty($_POST['name'])
         && !empty($_POST['surname'])

@@ -78,14 +78,22 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     // Nombre de consultations sur le jour
     $nbconsult = 0;
     // S'il y a des consultations
-    foreach($listrdv as $rdv) {
+    foreach($listrdv as $rdv) { //TODO ne pas afficher les anciennes consultations (antérieures au jour actuel)
         $daterdv = new DateTime($rdv["date_heure_rdv"]);
         $dateday = new DateTime($date);
         if($daterdv->format("Y-m-d") == $dateday->format("Y-m-d")) $nbconsult = $nbconsult + 1;
     }
 
     // Si le nombre de consultations est positif
-    if($nbconsult != 0) $week .= "<p class=\"nbconsult\"><a title=\"".$nbconsult." consultation(s)\" href=\"?date=".$date."#consultations\">".$nbconsult."</a></p>";
+    if($nbconsult != 0) {
+        $valget = "";
+        if(isset($_GET['medfilter'])) $valget .= "?medfilter=".$_GET['medfilter']."&";
+        else $valget .= "?";
+        if(isset($_GET['ma'])) $valget .= "ma=".$_GET['ma']."&";
+        $valget .= "date=".$date."#consultations";
+
+        $week .= "<p class=\"nbconsult\"><a title=\"".$nbconsult." consultation(s)\" href=\"".$valget."\">".$nbconsult."</a></p>";
+    }
     $week .= '</td>';
 
     // Si fin de semaine ou de mois
@@ -200,11 +208,19 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
             <!-- Affichage des consultations -->
             <div id="consultations">
                 <div class="popup_win">
-                    <a class="close" href="."><i class="fa fa-times-circle close-btn"></i></a>
+                    <a class="close" href=""><i class="fa fa-times-circle close-btn"></i></a>
                     <?php if(!isset($_GET['date'])): ?>
                     <p>Erreur : Adresse invalide.</p>
                     <?php else: ?>
-                    
+                        <h3>Consultations du <?php $datec = new DateTime($_GET['date']); echo $datec->format("d/m/Y"); ?></h3>
+                        <?php if(isset($_GET['medfilter'])):
+                            $medconsults = new MedecinDAO(new Medecin(null, null, null, null));
+                            $medconsults = $medconsults->getElementById($_GET['medfilter']); ?>
+                            <h4>Docteur <?php echo $medconsults['nom']." ".$medconsults['prenom']; ?></h4>
+
+                        <?php else: ?>
+
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>

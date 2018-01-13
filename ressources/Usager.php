@@ -11,7 +11,7 @@ class Usager extends Entity {
     private $numsecu;
 
     /**
-     * Usager constructor with a nullable id.
+     * Constructeur d'Usager (id nullable)
      * @param $id
      * @param $medecinref
      * @param $civilite
@@ -31,37 +31,22 @@ class Usager extends Entity {
         $this->numsecu = $numsecu;
     }
 
-    /**
-     * @return l'adresse de l'usager
-     */
     public function getAdresse() {
         return $this->adresse;
     }
 
-    /**
-     * @return la date de naissance de l'usager
-     */
     public function getDatenaissance() {
         return $this->datenaissance;
     }
 
-    /**
-     * @return le lieu de naissance de l'usager
-     */
     public function getLieunaissance() {
         return $this->lieunaissance;
     }
 
-    /**
-     * @return le numero de securite sociale de l'usager
-     */
     public function getNumsecu() {
         return $this->numsecu;
     }
 
-    /**
-     * @return le medecin referent de l'usager
-     */
     public function getMedecinref() {
         return $this->medecinref;
     }

@@ -10,7 +10,7 @@ abstract class Entity implements DBTable {
     private $prenom;
 
     /**
-     * Entity constructor.
+     * Constructeur d'Entity
      * @param $civilite
      * @param $nom
      * @param $prenom
@@ -22,35 +22,19 @@ abstract class Entity implements DBTable {
         $this->prenom = $prenom;
     }
 
-
-    /**
-     * @return l'id de l'entitee
-     */
     public function getId() {
         return $this->id;
     }
 
-    /**
-     * @return la civilite de l'entitee
-     */
-    public function getCivilite()
-    {
+    public function getCivilite() {
         return $this->civilite;
     }
 
-    /**
-     * @return le nom de l'entitee
-     */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
-    /**
-     * @return le prenom de l'entitee
-     */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
 

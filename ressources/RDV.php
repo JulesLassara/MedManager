@@ -11,7 +11,7 @@ class RDV implements DBTable {
     private $dateheurefin;
 
     /**
-     * RDV constructor.
+     * Constructeur de RDV
      * @param $dateheure
      * @param $usager
      * @param $medecin
@@ -74,6 +74,9 @@ class RDV implements DBTable {
         $this->dateheurefin->modify('+30 minutes');
     }
 
+    /**
+     * Passage au jour suivant
+     */
     public function nextDay() {
         $this->dateheure->modify('+1 day');
         $this->dateheure->setTime(8, 0, 0);

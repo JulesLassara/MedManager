@@ -396,15 +396,37 @@ footer {
   color: red;
 }
 
+.nbconsult {
+  text-align: center;
+  line-height: 0;
+}
+
+.nbconsult a {
+  color: white;
+  background-color: #6f42c1;
+  box-sizing: border-box;
+  padding-left: 9px;
+  padding-right: 9px;
+  border: 1px solid #6f42c1;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.nbconsult a:hover {
+  text-decoration: none;
+}
+
 /* END CALENDAR */
 
 .medfilter {
   height: 54px!important;
 }
 
-/* NEW CONSULTATION */
+/* CONSULTATIONS */
 
-#newConsultation {
+#consultations {
   display: none;
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -412,7 +434,7 @@ footer {
   z-index: 100;
 }
 
-#newConsultation:target {
+#consultations:target {
   display: block;
 }
 

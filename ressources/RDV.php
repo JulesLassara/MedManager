@@ -17,12 +17,12 @@ class RDV implements DBTable {
      * @param $medecin
      * @param $duree
      */
-    public function __construct(DateTime $dateheure, $usager, $medecin, $duree) {
+    public function __construct($dateheure, $usager, $medecin, $duree) {
         $this->dateheure = $dateheure;
         $this->usager = $usager;
         $this->medecin = $medecin;
         $this->duree = $duree;
-        $this->updateTimeEndRdv();
+        if($dateheure != null) $this->updateTimeEndRdv();
     }
 
     /**

@@ -9,11 +9,11 @@ class RDVDAO extends GenericDAO {
     }
 
     /**
-     * Effectue une recherche dans la table de l'élément concerné contenant le mot clé passé en paramètre dans la colonne passée en paramètre
+     * Effectue une recherche dans la table de l'élément concerné contenant l'id du médecin passé en paramètres
      * @param id_medecin : l'id du médecin concerné par la recherche
      * @return PDOStatement
      */
-    public function getElementsByKeywordInColumn($id_medecin) {
+    public function getElementsByIdMedecin($id_medecin) {
         $today = date('Y-m-d H:i', time());
         $res = $this->getConnection()->prepare('SELECT * FROM '.$this->getTableName().' WHERE '.$this->getColumns()[2].' LIKE :id_medecin AND '.$this->getColumns()[0].' > :today');
         $res->execute(array("id_medecin" => $id_medecin,

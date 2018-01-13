@@ -77,7 +77,7 @@ $a= 1;
 while (sizeof($rdvs) < 20) {
 
     // TODO: trouver un système pour faire qu'une seule et unique requête
-    $allrdv = $listrdv->getElementsByKeywordInColumn($_GET['id_medecin']);
+    $allrdv = $listrdv->getElementsByIdMedecin($_GET['id_medecin']);
 
     // Si l'heure de fin du rdv ne dépasse pas 17h30 et que ce n'est pas dimanche
     // TODO: jours feriés

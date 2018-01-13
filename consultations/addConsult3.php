@@ -80,7 +80,6 @@ while (sizeof($rdvs) < 20) {
     $allrdv = $listrdv->getElementsByIdMedecin($_GET['id_medecin']);
 
     // Si l'heure de fin du rdv ne dépasse pas 17h30 et que ce n'est pas dimanche
-    // TODO: jours feriés
     if($currentrdv->getDateheureFin()->format("H") <= 17
         && $currentrdv->getDateheure()->format("w") != 0) {
         $overlap = false;
@@ -90,12 +89,13 @@ while (sizeof($rdvs) < 20) {
             $rdvcheckend = new DateTime($data['date_heure_rdv']);
             $rdvcheckend->modify('+'.$data['duree_rdv'].' minutes');
 
-            // Si le rendez-vous courant en chevauche un autre
+            // Si le rendez-vous courant en chevauche un autre TODO: DEBUG
             if($currentrdv->getDateheure() >= new DateTime($data['date_heure_rdv'])
                 && $currentrdv->getDateheureFin() <= $rdvcheckend) {
                 $overlap = true;
-                break;
             }
+            if($overlap) break;
+
         }
 
         // Si le rendez-vous courant n'en chevauche pas un autre
@@ -123,7 +123,7 @@ while (sizeof($rdvs) < 20) {
 <?php include('../ressources/inc/nav.html'); ?>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../img/consultations.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">

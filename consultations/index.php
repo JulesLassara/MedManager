@@ -8,6 +8,9 @@ if(!isConnected()) {
 require('../ressources/Medecin.php');
 require('../ressources/dao/MedecinDAO.php');
 
+require('../ressources/Usager.php');
+require('../ressources/dao/UsagerDAO.php');
+
 require('../ressources/RDV.php');
 require('../ressources/dao/RDVDAO.php');
 
@@ -123,7 +126,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     <?php include('../ressources/inc/nav.html'); ?>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <header class="masthead" style="background-image: url('../img/consultations.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -217,10 +220,22 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                             $medconsults = new MedecinDAO(new Medecin(null, null, null, null));
                             $medconsults = $medconsults->getElementById($_GET['medfilter']); ?>
                             <h4>Docteur <?php echo $medconsults['nom']." ".$medconsults['prenom']; ?></h4>
-
-                        <?php else: ?>
-
-                        <?php endif; ?>
+                            <ul><?php foreach($listrdv as $rdv) {
+                                $usardv = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
+                                $usardv = $usardv->getElementById($rdv['id_usager']);
+                                $hdebutrdv = new DateTime($rdv['date_heure_rdv']); ?>
+                                <li>
+                                    <?php echo $hdebutrdv->format("H:i")." - ".$hdebutrdv->modify("+ ".$rdv['duree_rdv']."minutes")->format("H:i"); ?> | <?php echo $usardv['nom']." ".$usardv['prenom']; ?>
+                                    <a href="modifConsult.php?date=<?php echo $rdv['date_heure_rdv']; ?>&id_medecin=<?php echo $rdv['id_medecin']; ?>" class="firstactionConsult"><i class="fa fa-pencil"></i></a>
+                                    <a href="supprConsult.php?id=<?php echo $rdv['date_heure_rdv']; ?>&id_medecin=<?php echo $rdv['id_medecin']; ?>" class="actionConsult"><i class="fa fa-times-circle-o"></i></a>
+                                </li>
+                            <?php } ?>
+                            </ul>
+                        <?php else:
+                            while($currentmed = $listmed->fetch(PDO::FETCH_ASSOC)) { //TODO?>
+                                <h4>Docteur <?php echo $currentmed['nom'];?></h4>
+                        <?php }
+                        endif; ?>
                     <?php endif; ?>
                 </div>
             </div>

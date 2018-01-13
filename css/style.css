@@ -467,6 +467,18 @@ footer {
   text-align: center;
 }
 
+.popup_win ul li:hover .firstactionConsult, .popup_win ul li:hover .actionConsult {
+  visibility: visible;
+}
+
+.firstactionConsult {
+  margin-left: 30px;
+}
+
+.firstactionConsult, .actionConsult {
+  visibility: hidden;
+}
+
 .close {
   color: red;
 }
@@ -479,4 +491,15 @@ footer {
   float: right;
   color: red;
   margin: -5px -5px 0 0;
+}
+
+/* STATISTIQUES */
+
+.titlestats {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.table-striped {
+  text-align: center;
 }

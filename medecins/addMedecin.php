@@ -49,7 +49,7 @@ if(isset($_POST['addDoc'])) {
         <?php include('../ressources/inc/nav.html'); ?>
 
         <!-- Page Header -->
-        <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+        <header class="masthead" style="background-image: url('../img/medecins.jpg')">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">

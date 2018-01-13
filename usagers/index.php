@@ -29,7 +29,7 @@ if(isset($_POST['search'])) {
 <?php include('../ressources/inc/nav.html'); ?>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../img/usagers.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">

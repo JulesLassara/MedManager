@@ -32,7 +32,7 @@ if(isset($_POST['step1'])) {
 <?php include('../ressources/inc/nav.html'); ?>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../img/consultations.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">

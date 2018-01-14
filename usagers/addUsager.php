@@ -18,7 +18,7 @@ $rlistmed = $listmed->getElementsByKeyword("");
 // Si le formulaire a été validé
 if(isset($_POST['addUsa'])) {
     // Si tous les champs ont été remplis
-    if(!empty($_POST['civilite'])
+    if(isset($_POST['civilite'])
         && !empty($_POST['name'])
         && !empty($_POST['surname'])
         && !empty($_POST['address'])
@@ -27,8 +27,8 @@ if(isset($_POST['addUsa'])) {
         && !empty($_POST['numsecu'])
         && strlen($_POST['numsecu']) == 15
         && !empty($_POST['medref'])) {
-        if($_POST['medref'] == "null") {
-            $usa = new Usager(null, null, $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
+        if($_POST['medref'] == "null") { //TODO débug
+            $usa = new Usager(null, "null", $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
         } else {
             $usa = new Usager(null, $_POST['medref'], $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
         }
@@ -41,7 +41,7 @@ if(isset($_POST['addUsa'])) {
         }
         unset($_POST);
     } else {
-        if ($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
+        if (!isset($_POST['civilite'])) $civilitemissing = 1;
 
         if (empty($_POST['name'])) $namemissing = 1;
 

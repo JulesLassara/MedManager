@@ -115,7 +115,7 @@ if(isset($_POST['search'])) {
 
             <?php
             $nb = 1;
-            while($data = $res->fetch()) {
+            while($data = $res->fetch(PDO::FETCH_ASSOC)) {
                 if($nb == 1) {
                     $nb++; ?>
                     <div class="card-deck">

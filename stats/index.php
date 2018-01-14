@@ -10,6 +10,9 @@ require("../ressources/Usager.php");
 require("../ressources/dao/MedecinDAO.php");
 require("../ressources/Medecin.php");
 
+require("../ressources/dao/RDVDAO.php");
+require("../ressources/RDV.php");
+
 // Liste des usagers
 $usa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
 $listusa = $usa->getElementsByKeyword("");
@@ -17,6 +20,11 @@ $listusa = $usa->getElementsByKeyword("");
 // Liste des médecins
 $med = new MedecinDAO(new Medecin(null, null, null, null));
 $listmed = $med->getElementsByKeyword("");
+
+// Rdv
+$rdv = new RDVDAO(new RDV(null, null, null, null));
+
+// TRANCHES D'ÂGE
 
 // Femmes
 $fnbyoung = 0;
@@ -46,7 +54,7 @@ while($currentusa = $listusa->fetch(PDO::FETCH_ASSOC)) {
         if($age <= 25) $mnbyoung++;
         elseif($age <= 50) $mnbmid++;
         else $mnbold++;
-    } elseif($currentusa['civiltie'] == "Femme") {
+    } elseif($currentusa['civilite'] == "Femme") {
         if($age <= 25) $fnbyoung++;
         elseif($age <= 50) $fnbmid++;
         else $fnbold++;
@@ -136,7 +144,7 @@ while($currentusa = $listusa->fetch(PDO::FETCH_ASSOC)) {
                 <?php while($data = $listmed->fetch(PDO::FETCH_ASSOC)) { ?>
                 <tr>
                     <td><?php echo "Docteur ".$data['nom']; ?></td>
-                    <td><?php echo "Todo"; ?></td>
+                    <td><?php echo $rdv->getNbHeures($data['id_medecin']); ?></td>
                 </tr>
                 <?php } ?>
                 </tbody>

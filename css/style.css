@@ -452,6 +452,7 @@ footer {
   margin: 10% auto;
   box-shadow: 0px 0px 10px #000;
   border-radius: 3px;
+  overflow: auto;
 }
 
 .popup_win form {
@@ -467,16 +468,14 @@ footer {
   text-align: center;
 }
 
-.popup_win ul li:hover .firstactionConsult, .popup_win ul li:hover .actionConsult {
+.popup_win ul li:hover .actionConsult {
   visibility: visible;
 }
 
-.firstactionConsult {
-  margin-left: 30px;
-}
-
-.firstactionConsult, .actionConsult {
+.actionConsult {
   visibility: hidden;
+  float: right;
+  margin-right: 20px;
 }
 
 .close {
@@ -490,7 +489,8 @@ footer {
 .close-btn {
   float: right;
   color: red;
-  margin: -5px -5px 0 0;
+  margin-left: -20px;
+  position: fixed;
 }
 
 /* STATISTIQUES */

@@ -145,7 +145,7 @@ abstract class GenericDAO {
     public function getElementById($id) {
         $res = $this->connection->prepare('SELECT * FROM '.$this->getTableName().' WHERE '.$this->getIdName().' LIKE :id');
         $res->execute(array("id" => $id));
-        $res = $res->fetch();
+        $res = $res->fetch(PDO::FETCH_ASSOC);
         if($res[$this->getIdName()] == null) {
             return null;
         }

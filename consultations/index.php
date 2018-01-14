@@ -16,7 +16,7 @@ require('../ressources/dao/RDVDAO.php');
 
 // Liste des médecins du centre
 $listmed = new MedecinDAO(new Medecin(null, null, null, null));
-$listmed = $listmed->getElementsByKeyword("");
+$listmed = $listmed->getElementsByKeyword("")->fetchAll(PDO::FETCH_ASSOC);
 
 // Liste des rendez-vous en fonction de filtre s'il existe
 $listrdv = new RDVDAO(new RDV(null, null, null, null));
@@ -28,7 +28,7 @@ if(!isset($_GET['medfilter'])) {
     if(!$med->existsFromId()) {
         header('Location: .'); //TODO: message expliquant pq la redirection
     }
-    $listrdv = $listrdv->getElementsByIdMedecin($_GET['medfilter'])->fetchAll(PDO::FETCH_ASSOC);
+    $listrdv = $listrdv->getElementsByIdMedecin($_GET['medfilter'], true)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // Timezone de France
@@ -81,7 +81,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     // Nombre de consultations sur le jour
     $nbconsult = 0;
     // S'il y a des consultations
-    foreach($listrdv as $rdv) { //TODO ne pas afficher les anciennes consultations (antérieures au jour actuel)
+    foreach($listrdv as $rdv) {
         $daterdv = new DateTime($rdv["date_heure_rdv"]);
         $dateday = new DateTime($date);
         if($daterdv->format("Y-m-d") == $dateday->format("Y-m-d")) $nbconsult = $nbconsult + 1;
@@ -147,7 +147,43 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
             <!-- Ajouter une consultation -->
 
-            <?php
+            <?php if(isset($_SESSION['updated'])) {
+                switch($_SESSION['updated']) {
+                    case 0: ?>
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Échec de la modification.
+                        </div>
+                        <?php break;
+                    case 1: ?>
+                        <div class="alert alert-success" role="alert">
+                            <i class="fa fa-check-circle"></i> Succès : Modification effectuée.
+                        </div>
+                        <?php break;
+                }
+                unset($_SESSION['updated']);
+            }
+
+            if(isset($_SESSION['deleted'])) {
+                switch($_SESSION['deleted']) {
+                    case 1: ?>
+                        <div class="alert alert-success" role="alert">
+                            <i class="fa fa-check-circle"></i> Succès : Suppression effectuée.
+                        </div>
+                        <?php break;
+                    case 2: ?>
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Suppression impossible.
+                        </div>
+                        <?php break;
+                    case 3: ?>
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fa fa-exclamation-circle"></i> Erreur : Consultation inexistante.
+                        </div>
+                        <?php break;
+                }
+                unset($_SESSION['deleted']);
+            }
+
             if(isset($_SESSION['consult_added'])) {
                 switch ($_SESSION['consult_added']) {
                     case 0: ?>
@@ -170,7 +206,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                     <select name="medfilter" class="form-control medfilter">
                         <option value="" disabled selected>Médecin</option>
                         <?php
-                        while($data = $listmed->fetch()) { ?>
+                        foreach($listmed as $data) { ?>
                             <option value="<?php echo $data['id_medecin'] ?>"><?php echo "Docteur ".$data['nom']?></option>
                         <?php } ?>
                     </select>
@@ -226,15 +262,36 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                                 $hdebutrdv = new DateTime($rdv['date_heure_rdv']); ?>
                                 <li>
                                     <?php echo $hdebutrdv->format("H:i")." - ".$hdebutrdv->modify("+ ".$rdv['duree_rdv']."minutes")->format("H:i"); ?> | <?php echo $usardv['nom']." ".$usardv['prenom']; ?>
-                                    <a href="modifConsult.php?date=<?php echo $rdv['date_heure_rdv']; ?>&id_medecin=<?php echo $rdv['id_medecin']; ?>" class="firstactionConsult"><i class="fa fa-pencil"></i></a>
+                                    <a href="modifConsult1.php?date=<?php echo $rdv['date_heure_rdv']; ?>&id_medecin=<?php echo $rdv['id_medecin']; ?>" class="actionConsult"><i class="fa fa-pencil"></i></a>
                                     <a href="supprConsult.php?id=<?php echo $rdv['date_heure_rdv']; ?>&id_medecin=<?php echo $rdv['id_medecin']; ?>" class="actionConsult"><i class="fa fa-times-circle-o"></i></a>
                                 </li>
                             <?php } ?>
                             </ul>
                         <?php else:
-                            while($currentmed = $listmed->fetch(PDO::FETCH_ASSOC)) { //TODO?>
-                                <h4>Docteur <?php echo $currentmed['nom'];?></h4>
-                        <?php }
+                            foreach($listmed as $med) {
+                                $nordv = "<li>Aucune consultation.</li>"?>
+                                <h4>Docteur <?php echo $med['nom']." ".$med['prenom']; ?></h4>
+                                <ul>
+                                <?php foreach ($listrdv as $rdv) {
+                                    $date_rdv = new DateTime($rdv['date_heure_rdv']);
+                                    if ($rdv['id_medecin'] == $med['id_medecin'] && $date_rdv->format("Y-m-d") == $_GET['date']) {
+                                        $usardv = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
+                                        $usardv = $usardv->getElementById($rdv['id_usager']);
+                                        $hdebutrdv = new DateTime($rdv['date_heure_rdv']);
+                                        $nordv = "";?>
+                                        <li>
+                                            <?php echo $hdebutrdv->format("H:i") . " - " . $hdebutrdv->modify("+ " . $rdv['duree_rdv'] . "minutes")->format("H:i"); ?>
+                                            | <?php echo $usardv['nom'] . " " . $usardv['prenom']; ?>
+                                            <a href="modifConsult1.php?date=<?php echo $rdv['date_heure_rdv']; ?>&act_id_medecin=<?php echo $rdv['id_medecin']; ?>"
+                                               class="actionConsult"><i class="fa fa-pencil"></i></a>
+                                            <a href="supprConsult.php?date=<?php echo $rdv['date_heure_rdv']; ?>&act_id_medecin=<?php echo $rdv['id_medecin']; ?>"
+                                               class="actionConsult"><i class="fa fa-times-circle-o"></i></a>
+                                        </li>
+                                    <?php }
+                                }
+                                echo $nordv; ?>
+                                </ul>
+                            <?php }
                         endif; ?>
                     <?php endif; ?>
                 </div>

@@ -27,22 +27,22 @@ if(isset($_POST['backstep2'])) {
 //Vérification que l'id de l'usager passé en paramètre existe
 $usa = new UsagerDAO(new Usager($_GET['id_usager'], null, null, null, null, null, null, null, null));
 if(!$usa->existsFromId()) {
-    header('Location: addConsult1.php'); //TODO: message expliquant pq la redirection
+    header('Location: addConsult1.php');
 }
 
 //Vérification que l'id du médecin passé en paramètre existe
 $med = new MedecinDAO(new Medecin($_GET['id_medecin'], null, null, null));
 if(!$med->existsFromId()) {
-    header('Location: addConsult1.php'); //TODO: message expliquant pq la redirection
+    header('Location: addConsult1.php');
 }
 
 //Vérification de la durée de la consulation passée en paramètre
 if($_GET['duree_rdv'] != 30
-&& $_GET['duree_rdv'] != 60
-&& $_GET['duree_rdv'] != 90
-&& $_GET['duree_rdv'] != 120
-&& $_GET['duree_rdv'] != 150) {
-    header('Location: addConsult1.php'); //TODO: message expliquant pq la redirection
+    && $_GET['duree_rdv'] != 60
+    && $_GET['duree_rdv'] != 90
+    && $_GET['duree_rdv'] != 120
+    && $_GET['duree_rdv'] != 150) {
+    header('Location: addConsult1.php');
 }
 
 //Ajout de la consultation

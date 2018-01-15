@@ -102,8 +102,10 @@ abstract class GenericDAO {
         foreach($this->getColumns() as $info) {
             $update .= $info." = :".$info.",";
         }
+
         $update = substr($update, 0, -1);
         $update .= " WHERE ".$this->getIdName()." = :".$this->getIdName().";";
+
         $req = $this->connection->prepare($update);
         // Mise à jour
         $status = $req->execute($this->getElement()->toArray());

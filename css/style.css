@@ -424,9 +424,13 @@ footer {
   height: 54px!important;
 }
 
-/* CONSULTATIONS */
+.submit-center {
+  text-align: center;
+}
 
-#consultations {
+/* POPUP */
+
+#win {
   display: none;
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -434,7 +438,7 @@ footer {
   z-index: 100;
 }
 
-#consultations:target {
+#win:target {
   display: block;
 }
 
@@ -457,6 +461,7 @@ footer {
 
 .popup_win form {
   margin-top: 35px;
+  text-align: center;
 }
 
 .popup_win h3 {

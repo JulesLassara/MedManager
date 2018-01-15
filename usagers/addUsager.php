@@ -97,7 +97,7 @@ if(isset($_POST['addUsa'])) {
 
                 <form method="POST" action=".">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                        <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                     </div>
                 </form>
 
@@ -187,7 +187,7 @@ if(isset($_POST['addUsa'])) {
                     <br>
 
                     <div class="form-group submit-right">
-                        <button type="submit" class="btn btn-primary" name="addUsa">Ajouter</button>
+                        <button type="submit" class="btn btn-success" name="addUsa">Ajouter</button>
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@ require_once('DBTable.php');
 
 abstract class Entity implements DBTable {
 
-    private $id;
+    protected $id;
     private $civilite;
     private $nom;
     private $prenom;

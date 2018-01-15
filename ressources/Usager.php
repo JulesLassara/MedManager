@@ -31,6 +31,10 @@ class Usager extends Entity {
         $this->numsecu = $numsecu;
     }
 
+    public function setId($id) {
+        $this->id = $id;
+    }
+
     public function getAdresse() {
         return $this->adresse;
     }

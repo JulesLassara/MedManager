@@ -29,6 +29,12 @@ if(!isset($_GET['date']) && !isset($_GET['act_id_medecin'])) {
     header('Location: .');
 }
 
+// Vérification que l'id du médecin passé en paramètres existe
+$verifmed = new MedecinDAO(new Medecin($_GET['act_id_medecin'], null, null, null));
+if(!$verifmed->existsFromId()) {
+    header('Location: .');
+}
+
 // Consultation
 $rdv = new RDVDAO(new RDV(null, null, null, null));
 $infosrdv = $rdv->getElementByIds($_GET['date'], $_GET['act_id_medecin']);
@@ -92,7 +98,7 @@ if(isset($_POST['step2'])) {
 
             <form method="POST" action=".">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                    <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                 </div>
             </form>
 
@@ -122,9 +128,9 @@ if(isset($_POST['step2'])) {
                     </div>
                 </div>
                 <br>
-                <div class="form-group">
+                <div class="form-group submit-center">
                     <button type="submit" class="btn btn-primary" name="backstep1">Modification de l'usager</button>
-                    <button type="submit" class="btn btn-primary" name="step2">Modification de la date</button>
+                    <button type="submit" class="btn btn-success" name="step2">Modification de la date</button>
                 </div>
             </form>
 

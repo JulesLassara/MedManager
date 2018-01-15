@@ -13,14 +13,14 @@ if(isset($_GET['date']) && isset($_GET['act_id_medecin'])) {
     $rdv = new RDVDAO(new RDV(new DateTime($_GET['date']), null, $_GET['act_id_medecin'], null));
     if($rdv->existsFromIds($_GET['date'], $_GET['act_id_medecin'])) {
         if($rdv->delete()) {
-            $_SESSION['deleted'] = 1; // Succès
+            $_SESSION['consult_deleted'] = 1; // Succès
             header('Location: .');
         } else {
-            $_SESSION['deleted'] = 2; // Erreur
+            $_SESSION['consult_deleted'] = 2; // Erreur
             header('Location: .');
         }
     } else {
-        $_SESSION['deleted'] = 3; // Médecin inexistant
+        $_SESSION['consult_deleted'] = 3; // Médecin inexistant
         header('Location: .');
     }
 } else {

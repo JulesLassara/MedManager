@@ -3,24 +3,10 @@
 require('../ressources/RDV.php');
 require('../ressources/dao/RDVDAO.php');
 
-$listrdv = new RDVDAO(new RDV(null, null, null, null));
-$test = $listrdv->getElementsByIdMedecin("16")->fetchAll(PDO::FETCH_ASSOC);
-
-var_dump($test);
-
-//echo "<br>";
-/*
-foreach($test as $a) {
-    echo $a['date_heure_rdv'];
-}*/
+$a = new DateTime("2018-01-10 11:23:00");
+$b = new DateTime("2018-01-11 11:23:00");
 
 
-$date = "2018-01-21";
-$nbconsult = 0;
-
-foreach($test as $rdv) {
-    echo $rdv["date_heure_rdv"];
-    if(strpos($rdv['date_heure_rdv'], $date) !== false) $nbconsult .= 1;
+if($a >= $b) {
+    echo "ok";
 }
-
-echo $nbconsult;

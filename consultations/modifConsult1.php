@@ -5,6 +5,9 @@ if(!isConnected()) {
     header('Location: ../..');
 }
 
+require('../ressources/Medecin.php');
+require('../ressources/dao/MedecinDAO.php');
+
 require('../ressources/Usager.php');
 require('../ressources/dao/UsagerDAO.php');
 
@@ -13,6 +16,12 @@ require('../ressources/dao/RDVDAO.php');
 
 // S'il n'y a pas les clés primaires de la consultation en paramètre de l'URL
 if(!isset($_GET['date']) && !isset($_GET['act_id_medecin'])) {
+    header('Location: .');
+}
+
+// Vérification que l'id du médecin passé en paramètres existe
+$verifmed = new MedecinDAO(new Medecin($_GET['act_id_medecin'], null, null, null));
+if(!$verifmed->existsFromId()) {
     header('Location: .');
 }
 
@@ -69,7 +78,7 @@ if(isset($_POST['step1'])) {
 
             <form method="POST" action=".">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                    <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                 </div>
             </form>
 
@@ -86,8 +95,8 @@ if(isset($_POST['step1'])) {
                     </div>
                 </div>
                 <br>
-                <div class="form-group submit-right">
-                    <button type="submit" class="btn btn-primary" name="step1">Modification du médecin</button>
+                <div class="form-group submit-center">
+                    <button type="submit" class="btn btn-success" name="step1">Modification du médecin</button>
                 </div>
             </form>
 

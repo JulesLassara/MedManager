@@ -14,6 +14,8 @@ require('../ressources/dao/MedecinDAO.php');
 require('../ressources/RDV.php');
 require('../ressources/dao/RDVDAO.php');
 
+require('../ressources/Util.php');
+
 //Vérification qu'un id est passé en paramètre
 if(!isset($_GET['id_usager']) || !isset($_GET['id_medecin']) || !isset($_GET['duree_rdv'])) {
     header('Location: addConsult1.php');
@@ -21,19 +23,34 @@ if(!isset($_GET['id_usager']) || !isset($_GET['id_medecin']) || !isset($_GET['du
 
 //Retour à l'étape 2
 if(isset($_POST['backstep2'])) {
-    header('Location: addConsult2.php?id_usager='.$_GET['id_usager']);
+    header('Location: modifConsult2.php?date='.$_GET['date'].'&act_id_medecin='.$_GET['act_id_medecin'].'&id_usager='.$_POST['id_usager']);
+}
+
+// S'il n'y a pas les clés primaires de la consultation en paramètre de l'URL
+if(!isset($_GET['date']) && !isset($_GET['act_id_medecin'])) {
+    $_SESSION['err_modif'] = 1;
+    header('Location: .');
+}
+
+// Vérification que l'id du médecin passé en paramètres existe
+$verifmed = new MedecinDAO(new Medecin($_GET['act_id_medecin'], null, null, null));
+if(!$verifmed->existsFromId()) {
+    $_SESSION['err_modif'] = 1;
+    header('Location: .');
 }
 
 //Vérification que l'id de l'usager passé en paramètre existe
 $usa = new UsagerDAO(new Usager($_GET['id_usager'], null, null, null, null, null, null, null, null));
 if(!$usa->existsFromId()) {
-    header('Location: addConsult1.php');
+    $_SESSION['err_modif'] = 1;
+    header('Location: .');
 }
 
 //Vérification que l'id du médecin passé en paramètre existe
 $med = new MedecinDAO(new Medecin($_GET['id_medecin'], null, null, null));
 if(!$med->existsFromId()) {
-    header('Location: addConsult1.php');
+    $_SESSION['err_modif'] = 1;
+    header('Location: .');
 }
 
 //Vérification de la durée de la consulation passée en paramètre
@@ -42,14 +59,15 @@ if($_GET['duree_rdv'] != 30
     && $_GET['duree_rdv'] != 90
     && $_GET['duree_rdv'] != 120
     && $_GET['duree_rdv'] != 150) {
-    header('Location: addConsult1.php');
+    $_SESSION['err_modif'] = 1;
+    header('Location: .');
 }
 
-//Ajout de la consultation
+//Modification de la consultation
 if(isset($_POST['step3'])) {
     $datetmp = DateTime::createFromFormat('d/m/Y H:i:s', $_POST['horaire']);
     $rdv = new RDVDAO(new RDV($datetmp, $_GET['id_usager'], $_GET['id_medecin'], $_GET['duree_rdv']));
-    $_SESSION['consult_added'] = $rdv->insert();
+    $_SESSION['consult_modif'] = $rdv->update($_GET['date'], $_GET['act_id_medecin']);
     header('Location: .');
 }
 
@@ -69,15 +87,13 @@ $currentrdv = new RDV($today, null, null, 30);
 
 // Liste des créneaux déjà occupés
 $listrdv = new RDVDAO($currentrdv);
+$allrdv = $listrdv->getElementsByIdMedecin($_GET['id_medecin'], false)->fetchAll(PDO::FETCH_ASSOC);
 
 // Créneaux dispos (20 premiers)
 $rdvs = array();
-$a= 1;
+
 // Tant qu'il n'y a pas 20 créneaux disponibles
 while (sizeof($rdvs) < 20) {
-
-    // TODO: trouver un système pour faire qu'une seule et unique requête
-    $allrdv = $listrdv->getElementsByIdMedecin($_GET['id_medecin'], false);
 
     // Si l'heure de fin du rdv ne dépasse pas 17h30 et que ce n'est pas dimanche
     if($currentrdv->getDateheureFin()->format("H") <= 17
@@ -85,15 +101,11 @@ while (sizeof($rdvs) < 20) {
         $overlap = false;
 
         // Parcours de tous les rendez-vous
-        while($data = $allrdv->fetch()) {
-            $rdvcheckend = new DateTime($data['date_heure_rdv']);
-            $rdvcheckend->modify('+'.$data['duree_rdv'].' minutes');
+        foreach($allrdv as $data) {
 
-            // Si le rendez-vous courant en chevauche un autre TODO: DEBUG
-            if($currentrdv->getDateheure() >= new DateTime($data['date_heure_rdv'])
-                && $currentrdv->getDateheureFin() <= $rdvcheckend) {
-                $overlap = true;
-            }
+            $overlap = checkOverlap($currentrdv, $data);
+
+            // S'il y a chevauchement : sortie de la boucle
             if($overlap) break;
 
         }
@@ -143,7 +155,7 @@ while (sizeof($rdvs) < 20) {
 
             <form method="POST" action=".">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                    <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                 </div>
             </form>
 
@@ -160,9 +172,9 @@ while (sizeof($rdvs) < 20) {
                     </div>
                 </div>
                 <br>
-                <div class="form-group">
+                <div class="form-group submit-center">
                     <button type="submit" class="btn btn-primary" name="backstep2">Choix de la date</button>
-                    <button type="submit" class="btn btn-primary" name="step3">Enregistrer la consultation</button>
+                    <button type="submit" class="btn btn-success" name="step3">Enregistrer la consultation</button>
                 </div>
             </form>
 

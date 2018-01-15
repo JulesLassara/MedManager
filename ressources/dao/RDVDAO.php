@@ -31,7 +31,7 @@ class RDVDAO extends GenericDAO {
         return $res;
     }
 
-    function getElementByIds($date, $idmed) {
+    public function getElementByIds($date, $idmed) {
         $res = $this->getConnection()->prepare('SELECT * FROM '.$this->getTableName().' WHERE '.$this->getColumns()[0].' LIKE :date AND '.$this->getColumns()[2].' LIKE :idmed');
         $res->execute(array("date" => $date,
                             "idmed"=> $idmed));
@@ -40,6 +40,33 @@ class RDVDAO extends GenericDAO {
             return null;
         }
         return $res;
+    }
+
+    /**
+     * Met à jour l'element courant
+     * @param $daterdv : Ancienne date du rendez-vous
+     * @param $idmedecin : Ancin id du médecin
+     * @return true si succès, false si échec
+     */
+    public function update($daterdv, $idmedecin) {
+        // Préparation de la mise à jour
+        $update = "UPDATE ".$this->getTableName()." SET ";
+        foreach($this->getColumns() as $info) {
+            $update .= $info." = :".$info.",";
+        }
+        if($this instanceof RDVDAO) {
+            $update = substr($update, 0, -1);
+            $update .= " WHERE ".$this->getColumns()[0]." = '".$daterdv."' AND ".$this->getColumns()[2]." = ".$idmedecin.";";
+        } else {
+            $update = substr($update, 0, -1);
+            $update .= " WHERE ".$this->getIdName()." = :".$this->getIdName().";";
+        }
+
+        $req = $this->getConnection()->prepare($update);
+        // Mise à jour
+        $status = $req->execute($this->getElement()->toArray());
+
+        return $status;
     }
 
     public function delete() {
@@ -62,6 +89,12 @@ class RDVDAO extends GenericDAO {
         $res->execute(array("idmed" => $id_medecin));
         $minutes = $res->fetch()['heures'];
         return date('H:i:s', mktime(0,$minutes, 0));
+    }
+
+    public function deleteByUsagerId($id) {
+        $req = $this->getConnection()->prepare('DELETE FROM '.$this->getTableName().' WHERE '.$this->getColumns()[1].' = :id;');
+        $status = $req->execute(array("id" => $id));
+        return $status;
     }
 
 }

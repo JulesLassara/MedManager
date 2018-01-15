@@ -76,7 +76,7 @@ if(isset($_POST['addDoc'])) {
 
                     <form method="POST" action=".">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                            <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                         </div>
                     </form>
 
@@ -108,7 +108,7 @@ if(isset($_POST['addDoc'])) {
                         </div>
                         <br>
                         <div class="form-group submit-right">
-                            <button type="submit" class="btn btn-primary" name="addDoc">Ajouter</button>
+                            <button type="submit" class="btn btn-success" name="addDoc">Ajouter</button>
                         </div>
                     </form>
                 </div>

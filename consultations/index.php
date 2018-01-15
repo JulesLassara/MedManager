@@ -22,6 +22,8 @@ $listmed = $listmed->getElementsByKeyword("")->fetchAll(PDO::FETCH_ASSOC);
 $listrdv = new RDVDAO(new RDV(null, null, null, null));
 if(!isset($_GET['medfilter'])) {
     $listrdv = $listrdv->getElementsByKeyword("")->fetchAll(PDO::FETCH_ASSOC);
+} else if($_GET['medfilter'] == "all") {
+    $listrdv = $listrdv->getElementsByKeyword("")->fetchAll(PDO::FETCH_ASSOC);
 } else {
     //Vérification que l'id du médecin passé en paramètre existe
     $med = new MedecinDAO(new Medecin($_GET['medfilter'], null, null, null));
@@ -93,7 +95,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
         if(isset($_GET['medfilter'])) $valget .= "?medfilter=".$_GET['medfilter']."&";
         else $valget .= "?";
         if(isset($_GET['ma'])) $valget .= "ma=".$_GET['ma']."&";
-        $valget .= "date=".$date."#consultations";
+        $valget .= "date=".$date."#win";
 
         $week .= "<p class=\"nbconsult\"><a title=\"".$nbconsult." consultation(s)\" href=\"".$valget."\">".$nbconsult."</a></p>";
     }
@@ -147,8 +149,8 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
             <!-- Ajouter une consultation -->
 
-            <?php if(isset($_SESSION['updated'])) {
-                switch($_SESSION['updated']) {
+            <?php if(isset($_SESSION['consult_modif'])) {
+                switch($_SESSION['consult_modif']) {
                     case 0: ?>
                         <div class="alert alert-danger" role="alert">
                             <i class="fa fa-exclamation-circle"></i> Erreur : Échec de la modification.
@@ -160,11 +162,11 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                         </div>
                         <?php break;
                 }
-                unset($_SESSION['updated']);
+                unset($_SESSION['consult_modif']);
             }
 
-            if(isset($_SESSION['deleted'])) {
-                switch($_SESSION['deleted']) {
+            if(isset($_SESSION['consult_deleted'])) {
+                switch($_SESSION['consult_deleted']) {
                     case 1: ?>
                         <div class="alert alert-success" role="alert">
                             <i class="fa fa-check-circle"></i> Succès : Suppression effectuée.
@@ -181,7 +183,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                         </div>
                         <?php break;
                 }
-                unset($_SESSION['deleted']);
+                unset($_SESSION['consult_deleted']);
             }
 
             if(isset($_SESSION['consult_added'])) {
@@ -205,6 +207,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                 <div class="form-group control searchEntity">
                     <select name="medfilter" class="form-control medfilter">
                         <option value="" disabled selected>Médecin</option>
+                        <option value="all">Tous</option>
                         <?php
                         foreach($listmed as $data) { ?>
                             <option value="<?php echo $data['id_medecin'] ?>"><?php echo "Docteur ".$data['nom']?></option>
@@ -245,7 +248,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
             </p>
 
             <!-- Affichage des consultations -->
-            <div id="consultations">
+            <div id="win">
                 <div class="popup_win">
                     <a class="close" href=""><i class="fa fa-times-circle close-btn"></i></a>
                     <?php if(!isset($_GET['date'])): ?>
@@ -282,9 +285,9 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                                         <li>
                                             <?php echo $hdebutrdv->format("H:i") . " - " . $hdebutrdv->modify("+ " . $rdv['duree_rdv'] . "minutes")->format("H:i"); ?>
                                             | <?php echo $usardv['nom'] . " " . $usardv['prenom']; ?>
-                                            <a href="modifConsult1.php?date=<?php echo $rdv['date_heure_rdv']; ?>&act_id_medecin=<?php echo $rdv['id_medecin']; ?>"
+                                            <a title="Modifier cette consultation" href="modifConsult1.php?date=<?php echo $rdv['date_heure_rdv']; ?>&act_id_medecin=<?php echo $rdv['id_medecin']; ?>"
                                                class="actionConsult"><i class="fa fa-pencil"></i></a>
-                                            <a href="supprConsult.php?date=<?php echo $rdv['date_heure_rdv']; ?>&act_id_medecin=<?php echo $rdv['id_medecin']; ?>"
+                                            <a title="Supprimer cette consultation" href="supprConsult.php?date=<?php echo $rdv['date_heure_rdv']; ?>&act_id_medecin=<?php echo $rdv['id_medecin']; ?>"
                                                class="actionConsult"><i class="fa fa-times-circle-o"></i></a>
                                         </li>
                                     <?php }

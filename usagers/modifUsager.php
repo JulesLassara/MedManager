@@ -9,8 +9,10 @@ require('../ressources/dao/MedecinDAO.php');
 
 $usa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
 
+// Si la modification est validée
 if(isset($_POST['modifUsa'])) {
 
+    // Si tous les champs sont remplis correctement
     if(!empty($_POST['civilite'])
         && !empty($_POST['name'])
         && !empty($_POST['surname'])
@@ -30,6 +32,7 @@ if(isset($_POST['modifUsa'])) {
         header('Location: .');
 
     } else {
+        // Messages d'erreur
         if ($_POST['civilite'] != "Homme" && $_POST['civilite'] != "Femme" && $_POST['civilite'] != "Autre") $civilitemissing = 1;
 
         if (empty($_POST['name'])) $namemissing = 1;
@@ -47,6 +50,7 @@ if(isset($_POST['modifUsa'])) {
 
 }
 
+// Si l'id d'un usager à modifier est passé en paramètre
 if(isset($_GET['id'])) {
     $listmed = new MedecinDAO(new Medecin(null, null, null, null));
     $rlistmed = $listmed->getElementsByKeyword("");
@@ -76,14 +80,14 @@ if(isset($_GET['id'])) {
 <?php include('../ressources/inc/nav.html'); ?>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../img/usagers.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Médecins</h1>
-                    <span class="subheading">Ajout d'un médecin</span>
+                    <h1>Usagers</h1>
+                    <span class="subheading">Modification d'un usager</span>
                 </div>
             </div>
         </div>
@@ -96,7 +100,7 @@ if(isset($_GET['id'])) {
 
             <form method="POST" action=".">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                    <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                 </div>
             </form>
 
@@ -185,7 +189,7 @@ if(isset($_GET['id'])) {
                 <br>
 
                 <div class="form-group submit-right">
-                    <button type="submit" class="btn btn-primary" name="modifUsa">Modifier</button>
+                    <button type="submit" class="btn btn-success" name="modifUsa">Modifier</button>
                 </div>
             </form>
         </div>

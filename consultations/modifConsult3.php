@@ -26,6 +26,17 @@ if(isset($_POST['backstep2'])) {
     header('Location: modifConsult2.php?date='.$_GET['date'].'&act_id_medecin='.$_GET['act_id_medecin'].'&id_usager='.$_POST['id_usager']);
 }
 
+// Si le formulaire pour plus de consultations a été rempli
+if(isset($_POST['more_rdv'])) {
+    if(is_numeric($_POST['nb_more_rdv'])) {
+        $more_rdv = $_POST['nb_more_rdv'];
+    } else {
+        $more_rdv = 0;
+    }
+} else {
+    $more_rdv = 0;
+}
+
 // S'il n'y a pas les clés primaires de la consultation en paramètre de l'URL
 if(!isset($_GET['date']) && !isset($_GET['act_id_medecin'])) {
     $_SESSION['consult_erreur'] = "Adresse invalide.";
@@ -89,11 +100,11 @@ $currentrdv = new RDV($today, null, null, 30);
 $listrdv = new RDVDAO($currentrdv);
 $allrdv = $listrdv->getElementsByIdMedecin($_GET['id_medecin'], false)->fetchAll(PDO::FETCH_ASSOC);
 
-// Créneaux dispos (20 premiers)
+// Créneaux dispos (20 premiers + créneaux supplémentaires)
 $rdvs = array();
 
 // Tant qu'il n'y a pas 20 créneaux disponibles
-while (sizeof($rdvs) < 20) {
+while (sizeof($rdvs) < 20 + $more_rdv) {
 
     // Si l'heure de fin du rdv ne dépasse pas 17h30 et que ce n'est pas dimanche
     if($currentrdv->getDateheureFin()->format("H") <= 17
@@ -164,12 +175,16 @@ while (sizeof($rdvs) < 20) {
                     <div class="form-group controls">
                         <?php if(isset($horairemissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                         <select name="horaire" class="form-control">
-                            <option value="" disabled selected>Créneaux disponibles</option>
+                            <option value="" disabled selected><?php echo 20 + $more_rdv; ?> premiers créneaux disponibles</option>
                             <?php foreach($rdvs as $rdv) { ?>
                                 <option value="<?php echo $rdv; ?>"><?php echo $rdv; ?></option>
                             <?php } ?>
                         </select>
                     </div>
+                </div>
+                <div class="form-inline">
+                    <input type="number" class="form-control" placeholder="Exemple : 30" name="nb_more_rdv">
+                    <button type="submit" class="btn btn-info" name="more_rdv">Plus de créneaux</button>
                 </div>
                 <br>
                 <div class="form-group submit-center">

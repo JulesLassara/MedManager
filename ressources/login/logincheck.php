@@ -7,7 +7,7 @@ session_start();
  */
 function isConnected() {
   if(isset($_SESSION['login']) && isset($_SESSION['password'])) {
-    if($_SESSION['login'] == "admin" && $_SESSION['password'] == "admin") { // IDENTIFIANT = admin et MDP = admin
+    if($_SESSION['login'] == "secretaire1" && $_SESSION['password'] == "iutinfo") { // IDENTIFIANT = secretaire1 et MDP = iutinfo
       return 1;
     }
   }
@@ -16,7 +16,7 @@ function isConnected() {
 
 function loginFailed() {
   if(isset($_SESSION['login']) && isset($_SESSION['password'])) {
-    if($_SESSION['login'] != "admin" || $_SESSION['password'] != "admin") { // IDENTIFIANT = admin et MDP = admin
+    if($_SESSION['login'] != "secretaire1" || $_SESSION['password'] != "iutinfo") { // IDENTIFIANT = secretaire1 et MDP = iutinfo
       unset($_SESSION['login']);
       unset($_SESSION['password']);
       return 1;

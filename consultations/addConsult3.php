@@ -22,11 +22,12 @@ if(!isset($_GET['id_usager']) || !isset($_GET['id_medecin']) || !isset($_GET['du
     header('Location: .');
 }
 
-//Retour à l'étape 2
+// Retour à l'étape 2
 if(isset($_POST['backstep2'])) {
     header('Location: addConsult2.php?id_usager='.$_GET['id_usager']);
 }
 
+// Si le formulaire pour plus de consultations a été rempli
 if(isset($_POST['more_rdv'])) {
     if(is_numeric($_POST['nb_more_rdv'])) {
         $more_rdv = $_POST['nb_more_rdv'];
@@ -37,21 +38,21 @@ if(isset($_POST['more_rdv'])) {
     $more_rdv = 0;
 }
 
-//Vérification que l'id de l'usager passé en paramètre existe
+// Vérification que l'id de l'usager passé en paramètre existe
 $usa = new UsagerDAO(new Usager($_GET['id_usager'], null, null, null, null, null, null, null, null));
 if(!$usa->existsFromId()) {
     $_SESSION['consult_erreur'] = "Usager de la consultation inexistant.";
     header('Location: .');
 }
 
-//Vérification que l'id du médecin passé en paramètre existe
+// Vérification que l'id du médecin passé en paramètre existe
 $med = new MedecinDAO(new Medecin($_GET['id_medecin'], null, null, null));
 if(!$med->existsFromId()) {
     $_SESSION['consult_erreur'] = "Médecin de la consultation inexistant.";
     header('Location: .');
 }
 
-//Vérification de la durée de la consulation passée en paramètre
+// Vérification de la durée de la consulation passée en paramètre
 if($_GET['duree_rdv'] != 30
 && $_GET['duree_rdv'] != 60
 && $_GET['duree_rdv'] != 90

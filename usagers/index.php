@@ -16,12 +16,14 @@ require('../ressources/dao/RDVDAO.php');
 $usa = new UsagerDAO(new Usager(null, null, null, null, null, null, null, null, null));
 $med = new MedecinDAO(new Medecin(null, null, null, null));
 
+// Recherche
 if(isset($_POST['search'])) {
     $res = $usa->getElementsByKeyword($_POST['keyword']);
 } else {
     $res = $usa->getElementsByKeyword("");
 }
 
+// Si l'id d'un usager est passé en paramètre
 if(isset($_GET['suppr_id'])) {
     $usa->getElement()->setId($_GET['suppr_id']);
     if($usa->existsFromId()) {
@@ -31,6 +33,12 @@ if(isset($_GET['suppr_id'])) {
     }
 }
 
+// Si la suppression est annulée
+if(isset($_POST['suppr_no'])) {
+    header('Location: .#');
+}
+
+// Si la suppression est confirmée
 if(isset($_POST['suppr_yes'])) {
     $rdvtosuppr = new RDVDAO(new RDV(null, $_GET['suppr_id'], null, null));
     if($rdvtosuppr->deleteByUsagerId($_GET['suppr_id'])) {

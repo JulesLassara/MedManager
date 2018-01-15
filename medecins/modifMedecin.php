@@ -68,7 +68,7 @@ if(isset($_GET['id'])) {
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="site-heading">
                             <h1>Médecins</h1>
-                            <span class="subheading">Ajout d'un médecin</span>
+                            <span class="subheading">Modification d'un médecin</span>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ if(isset($_GET['id'])) {
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <form method="POST" action=".">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
+                            <button type="submit" class="btn btn-danger" name="back"><i class="fa fa-chevron-left"></i> Retour</button>
                         </div>
                     </form>
 
@@ -112,7 +112,7 @@ if(isset($_GET['id'])) {
                         </div>
                         <br>
                         <div class="form-group submit-right">
-                            <button type="submit" class="btn btn-primary" name="modifDoc">Modifier</button>
+                            <button type="submit" class="btn btn-success" name="modifDoc">Modifier</button>
                         </div>
                     </form>
                 </div>

@@ -20,7 +20,7 @@ class UsagerDAO extends GenericDAO {
         $selection = "SELECT * FROM ".$this->getTableName()." WHERE ".$this->getColumns()[7]." LIKE :num_secu;";
         $req = $this->getConnection()->prepare($selection);
         $req->execute(array("num_secu" => $this->getElement()->getNumsecu()));
-        return $req->fetch();
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 
 }

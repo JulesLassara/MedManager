@@ -26,12 +26,9 @@ if(isset($_POST['addUsa'])) {
         && !empty($_POST['placeborn'])
         && !empty($_POST['numsecu'])
         && strlen($_POST['numsecu']) == 15
-        && !empty($_POST['medref'])) {
-        if($_POST['medref'] == "null") { //TODO débug
-            $usa = new Usager(null, "null", $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
-        } else {
-            $usa = new Usager(null, $_POST['medref'], $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
-        }
+        && isset($_POST['medref'])) {
+        // TODO : accepter les ajout sans médecin référent
+        $usa = new Usager(null, $_POST['medref'], $_POST['civilite'], $_POST['name'], $_POST['surname'], $_POST['address'], $_POST['dateborn'], $_POST['placeborn'], $_POST['numsecu']);
         $rusa = new UsagerDAO($usa);
         if($rusa->exists()) {
             $exists = 1;
@@ -53,9 +50,9 @@ if(isset($_POST['addUsa'])) {
 
         if (empty($_POST['placeborn'])) $placebornmissing = 1;
 
-        if (empty($_POST['numsecu'])) $numsecumissing = 1;
+        if (strlen($_POST['numsecu']) != 15) $numsecuincorrect = 1;
 
-        if(strlen($_POST['numsecu']) != 15) $numsecuincorrect = 1;
+        if (!isset($_POST['medref'])) $medrefmissing = 1;
     }
 }
 ?>
@@ -165,8 +162,7 @@ if(isset($_POST['addUsa'])) {
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Numéro de sécurité sociale</label>
-                            <?php if(isset($numsecumissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
-                            <?php if(isset($numsecuincorrect)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Longueur du numéro de sécurité sociale incorrecte.</p> <?php endif; ?>
+                            <?php if(isset($numsecuincorrect)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Longueur du numéro de sécurité sociale incorrecte (≠ 15).</p> <?php endif; ?>
                             <input name="numsecu" type="text" class="form-control" placeholder="Numéro de sécurité sociale">
                         </div>
                     </div>
@@ -174,9 +170,9 @@ if(isset($_POST['addUsa'])) {
                     <!-- Médecin référent -->
                     <div class="control-group">
                         <div class="form-group controls">
+                            <?php if(isset($medrefmissing)): ?><p class="help-block text-danger"><i class="fa fa-remove"></i> Erreur : Veuillez renseigner ce champs.</p> <?php endif; ?>
                             <select name="medref" class="form-control">
                                 <option value="" disabled selected>Médecin référent</option>
-                                <option value="null">Aucun</option>
                                 <?php while($data = $rlistmed->fetch()) { ?>
                                     <option value="<?php echo $data['id_medecin']; ?>"><?php echo "Docteur ".$data['nom']; ?></option>
                                 <?php } ?>

@@ -53,7 +53,7 @@ abstract class GenericDAO {
      * Vérifie si l'élément existe
      * @return true s'il existe, false si non
      */
-    public function exists() { //todo modif pour usager --> check uniquement numéro de sécu
+    public function exists() {
         $selection = "SELECT * FROM ".$this->getTableName()." WHERE ";
         foreach($this->getColumns() as $info) {
             $selection .= $info." = :".$info." AND ";

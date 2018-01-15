@@ -28,7 +28,8 @@ if(!isset($_GET['medfilter'])) {
     //Vérification que l'id du médecin passé en paramètre existe
     $med = new MedecinDAO(new Medecin($_GET['medfilter'], null, null, null));
     if(!$med->existsFromId()) {
-        header('Location: .'); //TODO: message expliquant pq la redirection
+        $_SESSION['consult_erreur'] = "Médecin inexistant.";
+        header('Location: .');
     }
     $listrdv = $listrdv->getElementsByIdMedecin($_GET['medfilter'], true)->fetchAll(PDO::FETCH_ASSOC);
 }

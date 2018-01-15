@@ -16,12 +16,14 @@ require('../ressources/dao/RDVDAO.php');
 
 // S'il n'y a pas les clés primaires de la consultation en paramètre de l'URL
 if(!isset($_GET['date']) && !isset($_GET['act_id_medecin'])) {
+    $_SESSION['consult_erreur'] = "Adresse invalide.";
     header('Location: .');
 }
 
 // Vérification que l'id du médecin passé en paramètres existe
 $verifmed = new MedecinDAO(new Medecin($_GET['act_id_medecin'], null, null, null));
 if(!$verifmed->existsFromId()) {
+    $_SESSION['consult_erreur'] = "Médecin de la consultation inexistant.";
     header('Location: .');
 }
 
@@ -31,6 +33,7 @@ $infosrdv = $rdv->getElementByIds($_GET['date'], $_GET['act_id_medecin']);
 
 // Si la consultation n'existe pas
 if($infosrdv == 0) {
+    $_SESSION['consult_erreur'] = "Consultation inexistante.";
     header('Location: .');
 }
 

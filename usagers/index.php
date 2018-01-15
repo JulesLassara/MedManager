@@ -162,7 +162,7 @@ if(isset($_POST['suppr_yes'])) {
                             <tbody>
                             <tr>
                                 <td class="icon-row-card bull_over">
-                                    <i class="fa fa-venus"></i>
+                                    <i class="fa fa-venus-mars"></i>
                                     <span class="popup-text">Civilité</span>
                                 </td>
                                 <td><?php echo $data['civilite']; ?></td>

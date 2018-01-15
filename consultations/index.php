@@ -149,6 +149,15 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
             <!-- Ajouter une consultation -->
 
+            <?php if (isset($_SESSION['consult_erreur'])): ?>
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-exclamation-circle"></i> Erreur : <?php echo $_SESSION['consult_erreur']; ?>
+            </div>
+            <?php
+            unset($_SESSION['consult_erreur']);
+            endif; ?>
+
+
             <?php if(isset($_SESSION['consult_modif'])) {
                 switch($_SESSION['consult_modif']) {
                     case 0: ?>

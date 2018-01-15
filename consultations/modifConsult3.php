@@ -28,28 +28,28 @@ if(isset($_POST['backstep2'])) {
 
 // S'il n'y a pas les clés primaires de la consultation en paramètre de l'URL
 if(!isset($_GET['date']) && !isset($_GET['act_id_medecin'])) {
-    $_SESSION['err_modif'] = 1;
+    $_SESSION['consult_erreur'] = "Adresse invalide.";
     header('Location: .');
 }
 
-// Vérification que l'id du médecin passé en paramètres existe
+// Vérification que l'id du médecin actuel passé en paramètres existe
 $verifmed = new MedecinDAO(new Medecin($_GET['act_id_medecin'], null, null, null));
 if(!$verifmed->existsFromId()) {
-    $_SESSION['err_modif'] = 1;
+    $_SESSION['consult_erreur'] = "Médecin de la consultation inexistant.";
     header('Location: .');
 }
 
 //Vérification que l'id de l'usager passé en paramètre existe
 $usa = new UsagerDAO(new Usager($_GET['id_usager'], null, null, null, null, null, null, null, null));
 if(!$usa->existsFromId()) {
-    $_SESSION['err_modif'] = 1;
+    $_SESSION['consult_erreur'] = "Usager de la consultation inexistant.";
     header('Location: .');
 }
 
 //Vérification que l'id du médecin passé en paramètre existe
 $med = new MedecinDAO(new Medecin($_GET['id_medecin'], null, null, null));
 if(!$med->existsFromId()) {
-    $_SESSION['err_modif'] = 1;
+    $_SESSION['consult_erreur'] = "Médecin choisi pour la consultation inexistant.";
     header('Location: .');
 }
 
@@ -59,7 +59,7 @@ if($_GET['duree_rdv'] != 30
     && $_GET['duree_rdv'] != 90
     && $_GET['duree_rdv'] != 120
     && $_GET['duree_rdv'] != 150) {
-    $_SESSION['err_modif'] = 1;
+    $_SESSION['consult_erreur'] = "Durée de la consultation invalide.";
     header('Location: .');
 }
 

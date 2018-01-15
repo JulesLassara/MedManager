@@ -13,7 +13,8 @@ require('../ressources/dao/MedecinDAO.php');
 
 //Vérification qu'un id est passé en paramètre
 if(!isset($_GET['id_usager'])) {
-    header('Location: addConsult1.php');
+    $_SESSION['consult_erreur'] = "Adresse invalide.";
+    header('Location: .');
 }
 
 //Retour à l'étape 1
@@ -24,7 +25,8 @@ if(isset($_POST['backstep1'])) {
 //Vérification que l'id passé en paramètre existe
 $usa = new UsagerDAO(new Usager($_GET['id_usager'], null, null, null, null, null, null, null, null));
 if(!$usa->existsFromId()) {
-    header('Location: addConsult1.php');
+    $_SESSION['consult_erreur'] = "Usager de la consultation inexistant.";
+    header('Location: .');
 }
 
 //Informations de l'usager

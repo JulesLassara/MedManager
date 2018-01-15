@@ -2,24 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c30fc7ba-e23d-49b0-96bf-adf77cf97def" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/usagers/supprUsager.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/addConsult1.php" afterPath="$PROJECT_DIR$/consultations/addConsult1.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/addConsult2.php" afterPath="$PROJECT_DIR$/consultations/addConsult2.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/addConsult3.php" afterPath="$PROJECT_DIR$/consultations/addConsult3.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/index.php" afterPath="$PROJECT_DIR$/consultations/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/modifConsult1.php" afterPath="$PROJECT_DIR$/consultations/modifConsult1.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/modifConsult2.php" afterPath="$PROJECT_DIR$/consultations/modifConsult2.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/modifConsult3.php" afterPath="$PROJECT_DIR$/consultations/modifConsult3.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/supprConsult.php" afterPath="$PROJECT_DIR$/consultations/supprConsult.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consultations/test.php" afterPath="$PROJECT_DIR$/consultations/test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/medecins/addMedecin.php" afterPath="$PROJECT_DIR$/medecins/addMedecin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/Entity.php" afterPath="$PROJECT_DIR$/ressources/Entity.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/Usager.php" afterPath="$PROJECT_DIR$/ressources/Usager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/dao/GenericDAO.php" afterPath="$PROJECT_DIR$/ressources/dao/GenericDAO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/dao/RDVDAO.php" afterPath="$PROJECT_DIR$/ressources/dao/RDVDAO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usagers/addUsager.php" afterPath="$PROJECT_DIR$/usagers/addUsager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/medecins/index.php" afterPath="$PROJECT_DIR$/medecins/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usagers/index.php" afterPath="$PROJECT_DIR$/usagers/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,82 +34,20 @@
       <file leaf-file-name="modifConsult1.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/consultations/modifConsult1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="78" column="42" lean-forward="false" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+            <state relative-caret-position="460">
+              <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
               <folding>
-                <marker date="1516014363120" expanded="true" signature="1511:1597" ph="..." />
+                <marker date="1516015259438" expanded="true" signature="1705:1791" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifConsult2.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consultations/modifConsult2.php">
+      <file leaf-file-name="addConsult2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consultations/addConsult2.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="132" column="64" lean-forward="false" selection-start-line="132" selection-start-column="64" selection-end-line="132" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modifConsult3.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consultations/modifConsult3.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="178" column="19" lean-forward="true" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addMedecin.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/medecins/addMedecin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="110" column="60" lean-forward="false" selection-start-line="110" selection-start-column="60" selection-end-line="110" selection-end-column="60" />
-              <folding>
-                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addConsult3.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consultations/addConsult3.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="150" column="63" lean-forward="false" selection-start-line="150" selection-start-column="63" selection-end-line="150" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/consultations/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="289" column="63" lean-forward="false" selection-start-line="289" selection-start-column="63" selection-end-line="289" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addUsager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/usagers/addUsager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="146" column="73" lean-forward="true" selection-start-line="146" selection-start-column="73" selection-end-line="146" selection-end-column="73" />
+            <state relative-caret-position="416">
+              <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -129,26 +56,91 @@
       <file leaf-file-name="addConsult1.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/consultations/addConsult1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
+            <state relative-caret-position="1040">
               <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addConsult2.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consultations/addConsult2.php">
+      <file leaf-file-name="modifConsult2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consultations/modifConsult2.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="77" column="63" lean-forward="false" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
-              <folding>
-                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="420">
+              <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modifConsult3.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consultations/modifConsult3.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2">
+              <caret line="51" column="54" lean-forward="false" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addConsult3.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consultations/addConsult3.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="20" column="51" lean-forward="false" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consultations/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="144" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="error404.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/error/error404.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="41" column="74" lean-forward="false" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="71" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/usagers/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="164" column="62" lean-forward="false" selection-start-line="164" selection-start-column="62" selection-end-line="164" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -174,9 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ressources/DatabaseRequests.php" />
-        <option value="$PROJECT_DIR$/ressources/dao/GlobalDAO.php" />
-        <option value="$PROJECT_DIR$/ajouterMedecin/index.php" />
         <option value="$PROJECT_DIR$/supprimerMedecin/index.php" />
         <option value="$PROJECT_DIR$/modifierMedecin/index.php" />
         <option value="$PROJECT_DIR$/modifierUsager/index.php" />
@@ -201,7 +190,6 @@
         <option value="$PROJECT_DIR$/ressources/RDV.php" />
         <option value="$PROJECT_DIR$/usagers/supprUsager.php" />
         <option value="$PROJECT_DIR$/ressources/dao/UsagerDAO.php" />
-        <option value="$PROJECT_DIR$/medecins/index.php" />
         <option value="$PROJECT_DIR$/medecins/modifMedecin.php" />
         <option value="$PROJECT_DIR$/consultations/modifConsult.php" />
         <option value="$PROJECT_DIR$/medecins/supprMedecin.php" />
@@ -214,17 +202,21 @@
         <option value="$PROJECT_DIR$/ressources/dao/GenericDAO.php" />
         <option value="$PROJECT_DIR$/ressources/Entity.php" />
         <option value="$PROJECT_DIR$/ressources/dao/RDVDAO.php" />
-        <option value="$PROJECT_DIR$/usagers/index.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/consultations/addConsult3.php" />
         <option value="$PROJECT_DIR$/consultations/addConsult1.php" />
-        <option value="$PROJECT_DIR$/consultations/addConsult2.php" />
-        <option value="$PROJECT_DIR$/consultations/modifConsult1.php" />
-        <option value="$PROJECT_DIR$/consultations/modifConsult2.php" />
-        <option value="$PROJECT_DIR$/consultations/modifConsult3.php" />
         <option value="$PROJECT_DIR$/medecins/addMedecin.php" />
         <option value="$PROJECT_DIR$/usagers/addUsager.php" />
+        <option value="$PROJECT_DIR$/medecins/index.php" />
+        <option value="$PROJECT_DIR$/usagers/index.php" />
+        <option value="$PROJECT_DIR$/consultations/modifConsult3.php" />
+        <option value="$PROJECT_DIR$/consultations/modifConsult2.php" />
+        <option value="$PROJECT_DIR$/consultations/modifConsult1.php" />
+        <option value="$PROJECT_DIR$/consultations/addConsult2.php" />
+        <option value="$PROJECT_DIR$/consultations/addConsult3.php" />
         <option value="$PROJECT_DIR$/consultations/index.php" />
+        <option value="$PROJECT_DIR$/ressources/error404.html" />
+        <option value="$PROJECT_DIR$/error404.html" />
+        <option value="$PROJECT_DIR$/error/error404.html" />
       </list>
     </option>
   </component>
@@ -281,6 +273,11 @@
             <path>
               <item name="GestionnaireCabinetMedical" type="b2602c69:ProjectViewProjectNode" />
               <item name="GestionnaireCabinetMedical" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="error" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="GestionnaireCabinetMedical" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GestionnaireCabinetMedical" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="img" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -333,9 +330,12 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/error" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/consultations" />
       <recent name="$PROJECT_DIR$/suppression" />
       <recent name="$PROJECT_DIR$/ressources" />
@@ -396,18 +396,17 @@
       <workItem from="1515667659198" duration="17686000" />
       <workItem from="1515836984322" duration="18282000" />
       <workItem from="1515941802296" duration="9112000" />
-      <workItem from="1516006839292" duration="7625000" />
+      <workItem from="1516006839292" duration="9626000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169056000" />
+    <option name="totallyTimeSpent" value="171057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="10" width="1904" height="1062" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18315789" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18315789" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988626" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -439,7 +438,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modifierUsager/index.php" />
     <entry file="file://$PROJECT_DIR$/modifierMedecin/index.php" />
     <entry file="file://$PROJECT_DIR$/ajouterUsager/index.php" />
     <entry file="file://$PROJECT_DIR$/indexOLD.php" />
@@ -564,26 +562,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="71" column="36" lean-forward="false" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/medecins/supprMedecin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/medecins/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="44" column="25" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -712,111 +694,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usagers/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="139" column="12" lean-forward="false" selection-start-line="139" selection-start-column="12" selection-end-line="147" selection-end-column="19" />
-          <folding>
-            <marker date="1516013149013" expanded="true" signature="1490:1506" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="1548:1564" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="1757:2066" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="1783:2055" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="1836:2040" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="1879:2021" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="2123:2233" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="2145:2233" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="2194:2233" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="2395:2530" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="2669:2796" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="3106:3232" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="3370:3504" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="3642:3770" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="4148:4275" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="4414:4532" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="4713:5249" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="4801:4929" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5062:5229" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5470:5642" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5532:5642" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5577:5642" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5709:6080" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5745:6080" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5778:6080" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="5847:6026" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="6167:6454" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="6236:6400" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="6540:6874" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="6609:6796" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="6999:7042" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="6999:7304" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="7068:7250" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="7391:7434" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="7391:7722" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="7460:7636" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="7985:8110" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="8036:8110" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="8649:8825" ph="..." />
-            <marker date="1516013149013" expanded="true" signature="8689:8825" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="429" column="0" lean-forward="true" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consultations/addConsult3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="150" column="63" lean-forward="false" selection-start-line="150" selection-start-column="63" selection-end-line="150" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consultations/addConsult1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consultations/addConsult2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="77" column="63" lean-forward="false" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
-          <folding>
-            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consultations/modifConsult1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="78" column="42" lean-forward="false" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
-          <folding>
-            <marker date="1516014363120" expanded="true" signature="1511:1597" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consultations/modifConsult2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="132" column="64" lean-forward="false" selection-start-line="132" selection-start-column="64" selection-end-line="132" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consultations/modifConsult3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="178" column="19" lean-forward="true" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -847,10 +728,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/medecins/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="128" column="62" lean-forward="false" selection-start-line="128" selection-start-column="62" selection-end-line="128" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usagers/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="164" column="62" lean-forward="false" selection-start-line="164" selection-start-column="62" selection-end-line="164" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consultations/modifConsult3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="51" column="54" lean-forward="false" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consultations/modifConsult2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consultations/modifConsult1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
+          <folding>
+            <marker date="1516015259438" expanded="true" signature="1705:1791" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consultations/addConsult1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consultations/addConsult2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consultations/addConsult3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="51" lean-forward="false" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/consultations/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="289" column="63" lean-forward="false" selection-start-line="289" selection-start-column="63" selection-end-line="289" selection-end-column="63" />
+        <state relative-caret-position="180">
+          <caret line="144" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="71" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/error/error404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="41" column="74" lean-forward="false" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="74" />
           <folding />
         </state>
       </provider>

@@ -18,7 +18,8 @@ require('../ressources/Util.php');
 
 //Vérification qu'un id est passé en paramètre
 if(!isset($_GET['id_usager']) || !isset($_GET['id_medecin']) || !isset($_GET['duree_rdv'])) {
-    header('Location: addConsult1.php');
+    $_SESSION['consult_erreur'] = "Adresse invalide.";
+    header('Location: .');
 }
 
 //Retour à l'étape 2
@@ -39,13 +40,15 @@ if(isset($_POST['more_rdv'])) {
 //Vérification que l'id de l'usager passé en paramètre existe
 $usa = new UsagerDAO(new Usager($_GET['id_usager'], null, null, null, null, null, null, null, null));
 if(!$usa->existsFromId()) {
-    header('Location: addConsult1.php'); //TODO: message expliquant pq la redirection
+    $_SESSION['consult_erreur'] = "Usager de la consultation inexistant.";
+    header('Location: .');
 }
 
 //Vérification que l'id du médecin passé en paramètre existe
 $med = new MedecinDAO(new Medecin($_GET['id_medecin'], null, null, null));
 if(!$med->existsFromId()) {
-    header('Location: addConsult1.php'); //TODO: message expliquant pq la redirection
+    $_SESSION['consult_erreur'] = "Médecin de la consultation inexistant.";
+    header('Location: .');
 }
 
 //Vérification de la durée de la consulation passée en paramètre
@@ -54,7 +57,8 @@ if($_GET['duree_rdv'] != 30
 && $_GET['duree_rdv'] != 90
 && $_GET['duree_rdv'] != 120
 && $_GET['duree_rdv'] != 150) {
-    header('Location: addConsult1.php'); //TODO: message expliquant pq la redirection
+    $_SESSION['consult_erreur'] = "Durée de rendez-vous invalide.";
+    header('Location: .');
 }
 
 //Ajout de la consultation

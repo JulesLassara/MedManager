@@ -18,7 +18,7 @@ class Database {
 
     private function __construct() {
         try {
-            $this->linkpdo = new PDO("mysql:host=localhost;dbname=gest_cabinet_medical", "root", "");
+            $this->linkpdo = new PDO("mysql:host=localhost;dbname=gest_cabinet_medical", "root", "\$iutinfophp");
             $this->linkpdo->exec("SET CHARACTER SET UTF8");
         } catch (Exception $e) {
             die('Erreur : '.$e->getMessage());

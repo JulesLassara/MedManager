@@ -1,0 +1,16 @@
+-------
+
+Adresse du site : https://jules.lassara.fr/projects/GestionnaireCabinetMedical
+
+Identifiant sur le site : secretaire1
+Mot de passe sur le site : iutinfo
+
+-------
+
+Adresse de la base de données : https://jules.lassara.fr/phpmyadmin
+
+Identifiant de phpmyadmin : root
+Mot de passe de phpmyadmin : $iutinfophp
+
+-------
+Bon courage pour la correction ! :)
